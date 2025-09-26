@@ -11,8 +11,7 @@ const Footer = () => {
   const company = [
     { name: "About Us", href: "/about" },
     { name: "Case Studies", href: "/case-studies" },
-    { name: "Resources", href: "/resources" },
-    { name: "Contact", href: "/contact" },
+    { name: "Contact", href: "/consultation" },
   ];
 
   const industries = [
@@ -107,6 +106,15 @@ const Footer = () => {
             © 2024 Aethrix Systems. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
+            <a
+              href="https://www.linkedin.com/company/aethrix-systems"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary-foreground/60 hover:text-primary-foreground transition-smooth text-sm"
+              aria-label="Aethrix Systems on LinkedIn"
+            >
+              LinkedIn
+            </a>
             <Link
               to="/privacy"
               className="text-primary-foreground/60 hover:text-primary-foreground transition-smooth text-sm"

@@ -12,27 +12,30 @@ import {
   ArrowRight,
   CheckCircle 
 } from "lucide-react";
+import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 const Services = () => {
   const services = [
     {
       icon: Settings,
       title: "ERP Solutions",
-      description: "Streamline workflows with Odoo ERP customization, integration, and support.",
+      description: "Transform your business operations with our comprehensive ERP solutions.",
       href: "/erp",
       features: [
-        "Full Odoo ERP setup and integration",
-        "Tailored modules for finance, sales, HR, inventory",
-        "Customization for unique workflows",
-        "Ongoing support and optimization"
+        "Custom Odoo ERP implementation and integration",
+        "Industry-specific modules and workflows",
+        "Real-time analytics and reporting dashboards",
+        "Automated business processes",
+        "Cloud-based ERP solutions",
+        "24/7 technical support and maintenance"
       ],
       cta: "Get ERP Consultation"
     },
     {
       icon: Globe,
       title: "Web & App Development",
-      description: "Modern, responsive platforms designed for scalability and user experience.",
-      href: "/development",
+  description: "Design and ship fast, accessible web and mobile products.",
+  href: "/development",
       features: [
         "Custom websites and enterprise portals",
         "E-commerce solutions with seamless checkout",
@@ -44,8 +47,8 @@ const Services = () => {
     {
       icon: Cloud,
       title: "Cloud & Infrastructure",
-      description: "Secure, reliable, and scalable deployments for businesses on the move.",
-      href: "/cloud",
+  description: "Migrate, secure, and operate on cloud with best practices built-in.",
+  href: "/cloud",
       features: [
         "Cloud migration and deployment",
         "Hybrid and multi-cloud setups",
@@ -57,8 +60,8 @@ const Services = () => {
     {
       icon: Brain,
       title: "AI & Automation",
-      description: "Automate manual processes with intelligent, data-driven solutions.",
-      href: "/ai",
+  description: "Deploy practical AI for chat, search, analytics, and workflows.",
+  href: "/ai",
       features: [
         "Automated reporting & analytics",
         "Intelligent chatbots & customer service tools",
@@ -158,6 +161,133 @@ const Services = () => {
                 );
               })}
             </div>
+          </div>
+        </section>
+
+        {/* Services Comparison Table */}
+        <section className="py-16">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold mb-6">Service Comparison & Deliverables</h2>
+            <Table>
+              <TableCaption>At-a-glance comparison of scope, deliverables, and timeline by service.</TableCaption>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Service</TableHead>
+                  <TableHead>Discovery</TableHead>
+                  <TableHead>Design</TableHead>
+                  <TableHead>Build</TableHead>
+                  <TableHead>Test</TableHead>
+                  <TableHead>Deploy</TableHead>
+                  <TableHead>Handover</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell>ERP Solutions</TableCell>
+                  <TableCell>Process mapping, fit-gap, data audit</TableCell>
+                  <TableCell>Odoo module design, workflow specs</TableCell>
+                  <TableCell>Custom modules, integrations, migrations</TableCell>
+                  <TableCell>UAT scripts, data validation</TableCell>
+                  <TableCell>Cutover plan, staging to prod</TableCell>
+                  <TableCell>Admin training, runbooks, support</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Web & App Development</TableCell>
+                  <TableCell>Product discovery, backlog, architecture</TableCell>
+                  <TableCell>UX/UI, component library, APIs</TableCell>
+                  <TableCell>Frontend, backend, CI/CD</TableCell>
+                  <TableCell>Unit/e2e, accessibility, perf</TableCell>
+                  <TableCell>Blue/green deploy, monitoring</TableCell>
+                  <TableCell>Docs, handoff, enablement</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Cloud & Infrastructure</TableCell>
+                  <TableCell>Infra audit, cost analysis</TableCell>
+                  <TableCell>Landing zone, network design</TableCell>
+                  <TableCell>IaC modules, security baselines</TableCell>
+                  <TableCell>DR drills, penetration tests</TableCell>
+                  <TableCell>Cutover/migration</TableCell>
+                  <TableCell>Runbooks, SRE onboarding</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>AI & Automation</TableCell>
+                  <TableCell>Use-case selection, data readiness</TableCell>
+                  <TableCell>Prompt/RAG design, eval plan</TableCell>
+                  <TableCell>Pipelines, agents, integrations</TableCell>
+                  <TableCell>Human-in-loop evals, guardrails</TableCell>
+                  <TableCell>Shadow launch, grad rollout</TableCell>
+                  <TableCell>Ops dashboards, retraining cadence</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </div>
+        </section>
+
+        {/* Technology Stack Table */}
+        <section className="pb-24">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold mb-6">Technology Stack Overview</h2>
+            <Table>
+              <TableCaption>Typical tools and frameworks we use; adapted to your context.</TableCaption>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Layer</TableHead>
+                  <TableHead>Primary</TableHead>
+                  <TableHead>Alternatives</TableHead>
+                  <TableHead>Notes</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell>Frontend</TableCell>
+                  <TableCell>React, TypeScript, Vite, Tailwind, Radix/Shadcn</TableCell>
+                  <TableCell>Next.js, Vue, SvelteKit</TableCell>
+                  <TableCell>Accessible UI, fast dev/build</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Backend</TableCell>
+                  <TableCell>Node.js (Express/Nest)</TableCell>
+                  <TableCell>Django/FastAPI, Laravel</TableCell>
+                  <TableCell>Choose per team skills and scale</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Data</TableCell>
+                  <TableCell>PostgreSQL, Redis</TableCell>
+                  <TableCell>MySQL, MongoDB</TableCell>
+                  <TableCell>Migrations, backups, observability</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>ERP</TableCell>
+                  <TableCell>Odoo CE/EE</TableCell>
+                  <TableCell>ERPNext, SAP B1</TableCell>
+                  <TableCell>Fit-gap and TCO driven</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Cloud</TableCell>
+                  <TableCell>AWS, Docker, Kubernetes</TableCell>
+                  <TableCell>GCP/Azure, Fly.io</TableCell>
+                  <TableCell>IaC with Terraform/Pulumi</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>AI</TableCell>
+                  <TableCell>OpenAI APIs, LangChain, Vectordb</TableCell>
+                  <TableCell>Local LLMs, RAG frameworks</TableCell>
+                  <TableCell>Guardrails, evals, privacy</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>CI/CD</TableCell>
+                  <TableCell>GitHub Actions</TableCell>
+                  <TableCell>GitLab CI, Jenkins</TableCell>
+                  <TableCell>Preview envs, quality gates</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Security</TableCell>
+                  <TableCell>OWASP ASVS, SAST/DAST</TableCell>
+                  <TableCell>Dependabot, Trivy</TableCell>
+                  <TableCell>Shift-left with policies</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
           </div>
         </section>
 

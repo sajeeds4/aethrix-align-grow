@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useState } from "react";
 import { ArrowRight, CheckCircle, Calendar, Users, Target } from "lucide-react";
 
@@ -278,6 +279,79 @@ const Consultation = () => {
                 </Card>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Engagement Models */}
+        <section className="py-16">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 className="text-2xl font-semibold mb-4">Engagement Models</h3>
+            <Table>
+              <TableCaption>Choose a model aligned to your goals and constraints.</TableCaption>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Model</TableHead>
+                  <TableHead>Use When</TableHead>
+                  <TableHead>Pros</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell>Fixed Scope</TableCell>
+                  <TableCell>Clear requirements and deadlines</TableCell>
+                  <TableCell>Predictable cost and timeline</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Time & Materials</TableCell>
+                  <TableCell>Evolving scope or discovery</TableCell>
+                  <TableCell>Flexibility and transparency</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Retainer</TableCell>
+                  <TableCell>Ongoing improvements and support</TableCell>
+                  <TableCell>Guaranteed capacity</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </div>
+        </section>
+
+        {/* SLA Targets */}
+        <section className="py-16 bg-muted/30">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 className="text-2xl font-semibold mb-4">SLA Targets</h3>
+            <Table>
+              <TableCaption>Typical response and resolution objectives.</TableCaption>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Priority</TableHead>
+                  <TableHead>Response</TableHead>
+                  <TableHead>Resolution</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell>P1 - Critical</TableCell>
+                  <TableCell>15 minutes</TableCell>
+                  <TableCell>4 hours</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>P2 - High</TableCell>
+                  <TableCell>1 hour</TableCell>
+                  <TableCell>1 business day</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>P3 - Normal</TableCell>
+                  <TableCell>4 hours</TableCell>
+                  <TableCell>3 business days</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>P4 - Low</TableCell>
+                  <TableCell>1 business day</TableCell>
+                  <TableCell>5 business days</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
           </div>
         </section>
       </main>

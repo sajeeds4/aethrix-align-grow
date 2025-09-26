@@ -1,0 +1,39 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='800' height='380' viewBox='0 0 800 380' fill='none'>
+  <rect width='800' height='380' rx='12' fill='#0B0F1A'/>
+  <g font-family='sans-serif' font-size='12' fill='#C9D1D9'>
+    <rect x='40' y='40' width='200' height='80' rx='8' fill='#111827' stroke='#334155'/>
+    <text x='50' y='72'>Client (Web/Mobile)</text>
+    <text x='50' y='92'>React / iOS / Android</text>
+
+    <rect x='300' y='40' width='200' height='80' rx='8' fill='#111827' stroke='#334155'/>
+    <text x='310' y='72'>API Gateway / BFF</text>
+    <text x='310' y='92'>Node / Express</text>
+
+    <rect x='560' y='40' width='200' height='80' rx='8' fill='#111827' stroke='#334155'/>
+    <text x='570' y='72'>Auth Service</text>
+    <text x='570' y='92'>JWT / OAuth2</text>
+
+    <rect x='300' y='160' width='200' height='80' rx='8' fill='#111827' stroke='#334155'/>
+    <text x='310' y='192'>Business Services</text>
+    <text x='310' y='212'>Microservices</text>
+
+    <rect x='560' y='160' width='200' height='80' rx='8' fill='#111827' stroke='#334155'/>
+    <text x='570' y='192'>Queue / Events</text>
+    <text x='570' y='212'>Kafka / SQS</text>
+
+    <rect x='300' y='280' width='200' height='80' rx='8' fill='#111827' stroke='#334155'/>
+    <text x='310' y='312'>Databases</text>
+    <text x='310' y='332'>Postgres / Mongo</text>
+
+    <rect x='560' y='280' width='200' height='80' rx='8' fill='#111827' stroke='#334155'/>
+    <text x='570' y='312'>Object Storage</text>
+    <text x='570' y='332'>S3 / GCS</text>
+
+    <path d='M240 80 L300 80' stroke='#64748B'/>
+    <path d='M500 80 L560 80' stroke='#64748B'/>
+    <path d='M400 120 L400 160' stroke='#64748B'/>
+    <path d='M500 200 L560 200' stroke='#64748B'/>
+    <path d='M400 240 L400 280' stroke='#64748B'/>
+    <path d='M500 320 L560 320' stroke='#64748B'/>
+  </g>
+</svg>

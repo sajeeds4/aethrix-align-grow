@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { Factory, ShoppingCart, Heart, Truck, ArrowRight } from "lucide-react";
+import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 const Industries = () => {
   const industries = [
@@ -98,7 +99,7 @@ const Industries = () => {
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     viewport={{ once: true }}
                   >
-                    <Card className="group hover:shadow-large transition-smooth border-border hover:border-accent/50 bg-card h-full">
+                    <Card id={industry.title.toLowerCase().split(" ").join("-")} className="group hover:shadow-large transition-smooth border-border hover:border-accent/50 bg-card h-full">
                       <CardHeader className="space-y-4">
                         <div className="flex items-center justify-between">
                           <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center group-hover:scale-110 transition-bounce">
@@ -137,6 +138,45 @@ const Industries = () => {
                 );
               })}
             </div>
+          </div>
+        </section>
+
+        {/* Industry Challenges vs Solutions */}
+        <section className="py-16">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 className="text-2xl font-semibold mb-4">Industry Challenges & Solutions</h3>
+            <Table>
+              <TableCaption>Common patterns we solve across sectors.</TableCaption>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Industry</TableHead>
+                  <TableHead>Challenge</TableHead>
+                  <TableHead>Solution</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell>Manufacturing</TableCell>
+                  <TableCell>Inventory inaccuracies and production delays</TableCell>
+                  <TableCell>MRP with real-time stock and quality checks</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Retail & E-Commerce</TableCell>
+                  <TableCell>Channel fragmentation and stock sync issues</TableCell>
+                  <TableCell>Unified inventory and order orchestration</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Healthcare</TableCell>
+                  <TableCell>Data privacy and complex scheduling</TableCell>
+                  <TableCell>Secure patient workflows and audit trails</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Logistics</TableCell>
+                  <TableCell>Route inefficiencies and poor visibility</TableCell>
+                  <TableCell>Real-time tracking and AI route optimization</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
           </div>
         </section>
 

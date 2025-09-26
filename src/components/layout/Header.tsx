@@ -2,22 +2,43 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import { NavigationMenuDemo } from "@/components/ui/navigation-menu-demo";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
   const navigation = [
-    { name: "Home", href: "/" },
-    { name: "Services", href: "/services" },
-    { name: "ERP Solutions", href: "/erp" },
-    { name: "Web & App Development", href: "/development" },
-    { name: "Cloud & Infrastructure", href: "/cloud" },
-    { name: "AI & Automation", href: "/ai" },
-    { name: "Industries", href: "/industries" },
-    { name: "Case Studies", href: "/case-studies" },
-    { name: "Resources", href: "/resources" },
-    { name: "Contact", href: "/contact" },
+    { 
+      name: "Home", 
+      href: "/" 
+    },
+    {
+      name: "About",
+      href: "/about"
+    },
+    { 
+      name: "Services",
+      href: "/services",
+      children: [
+        { name: "ERP Solutions", href: "/erp" },
+        { name: "Web & App Development", href: "/development" },
+        { name: "Cloud & Infrastructure", href: "/cloud" },
+        { name: "AI & Automation", href: "/ai" }
+      ]
+    },
+    { 
+      name: "Industries", 
+      href: "/industries" 
+    },
+    { 
+      name: "Case Studies", 
+      href: "/case-studies" 
+    },
+    { 
+      name: "Contact", 
+      href: "/contact" 
+    }
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -27,28 +48,23 @@ const Header = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">A</span>
+          <Link to="/" className="flex items-start py-2">
+            <div className="flex flex-col items-start">
+              <div className="flex items-center gap-3">
+                <img 
+                  src="/aethrix-logo.png" 
+                  alt="Aethrix Systems Logo" 
+                  className="w-5 h-5 object-contain"
+                />
+                <h1 className="text-lg font-medium tracking-wide">Aethrix Systems</h1>
+              </div>
+              <span className="text-xs text-gray-500 mt-0.5 tracking-wide ml-8">Innovation. Security. Agility.</span>
             </div>
-            <span className="text-xl font-bold text-foreground">Aethrix Systems</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-1">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-smooth hover:bg-accent hover:text-accent-foreground ${
-                  isActive(item.href)
-                    ? "bg-accent text-accent-foreground"
-                    : "text-muted-foreground"
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
+          <nav className="hidden lg:flex items-center">
+            <NavigationMenuDemo />
           </nav>
 
           {/* Contact Info & CTA */}
