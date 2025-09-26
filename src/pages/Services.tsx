@@ -168,6 +168,122 @@ const Services = () => {
         <section className="py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold mb-6">Service Comparison & Deliverables</h2>
+
+            {/* Service Pricing & ROI */}
+            <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+              <h3 className="text-2xl font-semibold mb-4">Service Pricing & ROI Analysis</h3>
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Service Category</TableHead>
+                      <TableHead>Starting Price</TableHead>
+                      <TableHead>Average Project Size</TableHead>
+                      <TableHead>Typical ROI Timeline</TableHead>
+                      <TableHead>Expected ROI %</TableHead>
+                      <TableHead>Key Value Drivers</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell className="font-medium">ERP Solutions</TableCell>
+                      <TableCell>$25,000</TableCell>
+                      <TableCell>$50,000 - $200,000</TableCell>
+                      <TableCell>12-18 months</TableCell>
+                      <TableCell>200-400%</TableCell>
+                      <TableCell>Process automation, data accuracy, compliance</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">Web Development</TableCell>
+                      <TableCell>$15,000</TableCell>
+                      <TableCell>$30,000 - $150,000</TableCell>
+                      <TableCell>6-12 months</TableCell>
+                      <TableCell>150-300%</TableCell>
+                      <TableCell>Customer acquisition, brand presence, sales automation</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">Cloud Infrastructure</TableCell>
+                      <TableCell>$10,000</TableCell>
+                      <TableCell>$25,000 - $100,000</TableCell>
+                      <TableCell>3-6 months</TableCell>
+                      <TableCell>300-500%</TableCell>
+                      <TableCell>Cost reduction, scalability, disaster recovery</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">AI & Automation</TableCell>
+                      <TableCell>$20,000</TableCell>
+                      <TableCell>$40,000 - $250,000</TableCell>
+                      <TableCell>9-15 months</TableCell>
+                      <TableCell>250-600%</TableCell>
+                      <TableCell>Labor cost reduction, accuracy improvement, insights</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </div>
+            </div>
+
+            {/* Implementation Roadmap */}
+            <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+              <h3 className="text-2xl font-semibold mb-4">Typical Implementation Roadmap</h3>
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Phase</TableHead>
+                      <TableHead>Duration</TableHead>
+                      <TableHead>ERP Solutions</TableHead>
+                      <TableHead>Web Development</TableHead>
+                      <TableHead>Cloud Infrastructure</TableHead>
+                      <TableHead>AI & Automation</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell className="font-medium">Discovery & Planning</TableCell>
+                      <TableCell>2-4 weeks</TableCell>
+                      <TableCell>Business process mapping, requirements gathering</TableCell>
+                      <TableCell>User research, wireframing, tech stack selection</TableCell>
+                      <TableCell>Infrastructure audit, migration planning</TableCell>
+                      <TableCell>Data analysis, model selection, feasibility study</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">Design & Architecture</TableCell>
+                      <TableCell>3-6 weeks</TableCell>
+                      <TableCell>System design, module configuration</TableCell>
+                      <TableCell>UI/UX design, API architecture</TableCell>
+                      <TableCell>Network design, security architecture</TableCell>
+                      <TableCell>Model architecture, data pipeline design</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">Development & Implementation</TableCell>
+                      <TableCell>8-16 weeks</TableCell>
+                      <TableCell>Module deployment, customization</TableCell>
+                      <TableCell>Frontend/backend development, testing</TableCell>
+                      <TableCell>Infrastructure provisioning, migration</TableCell>
+                      <TableCell>Model training, integration development</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">Testing & Deployment</TableCell>
+                      <TableCell>2-4 weeks</TableCell>
+                      <TableCell>User acceptance testing, go-live</TableCell>
+                      <TableCell>Performance testing, production deployment</TableCell>
+                      <TableCell>Load testing, cutover execution</TableCell>
+                      <TableCell>Model validation, production deployment</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">Support & Optimization</TableCell>
+                      <TableCell>Ongoing</TableCell>
+                      <TableCell>User training, performance monitoring</TableCell>
+                      <TableCell>Maintenance, feature enhancements</TableCell>
+                      <TableCell>Monitoring, cost optimization</TableCell>
+                      <TableCell>Model retraining, performance tuning</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </div>
+            </div>
+
+            <h3 className="text-2xl font-semibold mb-4">Detailed Service Deliverables</h3>
             <Table>
               <TableCaption>At-a-glance comparison of scope, deliverables, and timeline by service.</TableCaption>
               <TableHeader>

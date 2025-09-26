@@ -219,7 +219,167 @@ const ERP = () => {
         {/* Odoo Modules Matrix */}
         <section className="py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h3 className="text-2xl font-semibold mb-4">Odoo Modules Coverage</h3>
+            
+            {/* Advanced Module Coverage */}
+            <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+              <h3 className="text-2xl font-semibold mb-4">Advanced Module Coverage & Customization</h3>
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Module Category</TableHead>
+                      <TableHead>Core Modules</TableHead>
+                      <TableHead>Advanced Features</TableHead>
+                      <TableHead>Custom Workflows</TableHead>
+                      <TableHead>Integration Points</TableHead>
+                      <TableHead>Industry Variants</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell className="font-medium">Sales & CRM</TableCell>
+                      <TableCell>CRM, Sales, Website CRM</TableCell>
+                      <TableCell>Lead scoring, automated follow-ups, quotation builder</TableCell>
+                      <TableCell>Multi-stage approval, territory management</TableCell>
+                      <TableCell>Mailchimp, HubSpot, Salesforce sync</TableCell>
+                      <TableCell>B2B portal, subscription billing</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">Inventory & Manufacturing</TableCell>
+                      <TableCell>Inventory, MRP, Quality</TableCell>
+                      <TableCell>Barcode scanning, lot tracking, quality control</TableCell>
+                      <TableCell>Just-in-time, make-to-order, dropshipping</TableCell>
+                      <TableCell>WMS systems, IoT sensors, PLCs</TableCell>
+                      <TableCell>Food traceability, pharma serialization</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">Accounting & Finance</TableCell>
+                      <TableCell>Accounting, Invoicing, Expenses</TableCell>
+                      <TableCell>Multi-currency, inter-company, budget control</TableCell>
+                      <TableCell>Automated reconciliation, payment terms</TableCell>
+                      <TableCell>Banks APIs, payment gateways, tax systems</TableCell>
+                      <TableCell>IFRS reporting, regulatory compliance</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">HR & Project</TableCell>
+                      <TableCell>HR, Payroll, Project, Timesheet</TableCell>
+                      <TableCell>Performance reviews, recruitment, training</TableCell>
+                      <TableCell>Approval chains, automated calculations</TableCell>
+                      <TableCell>HRIS systems, time tracking tools</TableCell>
+                      <TableCell>Multi-country payroll, union rules</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </div>
+            </div>
+
+            {/* Migration Strategies */}
+            <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+              <h3 className="text-2xl font-semibold mb-4">Data Migration Strategies & Approaches</h3>
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Legacy System</TableHead>
+                      <TableHead>Migration Method</TableHead>
+                      <TableHead>Data Volume Capacity</TableHead>
+                      <TableHead>Downtime Required</TableHead>
+                      <TableHead>Risk Level</TableHead>
+                      <TableHead>Rollback Strategy</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell className="font-medium">QuickBooks/Sage</TableCell>
+                      <TableCell>Direct export/import with validation</TableCell>
+                      <TableCell>Up to 100k records</TableCell>
+                      <TableCell>4-8 hours</TableCell>
+                      <TableCell>Low</TableCell>
+                      <TableCell>Database restore from backup</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">SAP Business One</TableCell>
+                      <TableCell>ETL pipeline with staged migration</TableCell>
+                      <TableCell>Up to 1M records</TableCell>
+                      <TableCell>12-24 hours</TableCell>
+                      <TableCell>Medium</TableCell>
+                      <TableCell>Parallel run for 2 weeks</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">Legacy ERP</TableCell>
+                      <TableCell>Custom connectors with data mapping</TableCell>
+                      <TableCell>Up to 10M records</TableCell>
+                      <TableCell>24-48 hours</TableCell>
+                      <TableCell>High</TableCell>
+                      <TableCell>Phased rollout with gradual cutover</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">Excel/Access</TableCell>
+                      <TableCell>Template-based import with cleanup</TableCell>
+                      <TableCell>Up to 50k records</TableCell>
+                      <TableCell>2-4 hours</TableCell>
+                      <TableCell>Low</TableCell>
+                      <TableCell>Keep old system as reference</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </div>
+            </div>
+
+            {/* Performance Optimization */}
+            <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+              <h3 className="text-2xl font-semibold mb-4">Performance Optimization & Scaling</h3>
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>User Scale</TableHead>
+                      <TableHead>Server Specs</TableHead>
+                      <TableHead>Database Config</TableHead>
+                      <TableHead>Caching Strategy</TableHead>
+                      <TableHead>Response Time SLA</TableHead>
+                      <TableHead>Monitoring Tools</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell className="font-medium">1-10 users</TableCell>
+                      <TableCell>2 vCPU, 4GB RAM, SSD</TableCell>
+                      <TableCell>PostgreSQL 13+, basic tuning</TableCell>
+                      <TableCell>Browser cache, static assets CDN</TableCell>
+                      <TableCell>Sub 2s page loads</TableCell>
+                      <TableCell>Basic logging, uptime monitoring</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">10-50 users</TableCell>
+                      <TableCell>4 vCPU, 8GB RAM, SSD RAID</TableCell>
+                      <TableCell>Optimized queries, connection pooling</TableCell>
+                      <TableCell>Redis session store, query cache</TableCell>
+                      <TableCell>Sub 1.5s page loads</TableCell>
+                      <TableCell>APM, database monitoring</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">50-200 users</TableCell>
+                      <TableCell>8 vCPU, 16GB RAM, NVMe</TableCell>
+                      <TableCell>Read replicas, query optimization</TableCell>
+                      <TableCell>Multi-layer cache, CDN assets</TableCell>
+                      <TableCell>Sub 1s page loads</TableCell>
+                      <TableCell>Full observability stack</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">200+ users</TableCell>
+                      <TableCell>Load balanced cluster</TableCell>
+                      <TableCell>Sharded database, archived data</TableCell>
+                      <TableCell>Distributed cache, edge computing</TableCell>
+                      <TableCell>Sub 800ms page loads</TableCell>
+                      <TableCell>AI-powered incident response</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </div>
+            </div>
+
+            <h3 className="text-2xl font-semibold mb-4">Standard Odoo Modules Coverage</h3>
             <Table>
               <TableCaption>Typical module coverage; final scope agreed during discovery.</TableCaption>
               <TableHeader>
