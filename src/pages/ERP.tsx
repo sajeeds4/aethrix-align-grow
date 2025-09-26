@@ -4,7 +4,7 @@ import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
-import { Settings, CheckCircle, ArrowRight, Users, BarChart3, Workflow, ChevronRight } from "lucide-react";
+import { Settings, CheckCircle, ArrowRight, Users, BarChart3, Workflow, ChevronRight, Package, CreditCard, Truck } from "lucide-react";
 import { useEffect } from "react";
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
@@ -70,53 +70,140 @@ const ERP = () => {
           </ol>
         </nav>
         {/* Hero Section */}
-        <section className="py-24 bg-gradient-hero text-primary-foreground">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto text-center">
-              <motion.h1 
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="text-display mb-6"
-              >
-                ERP That{" "}
-                <span className="text-accent">Fits Your Business</span>
-              </motion.h1>
-              <motion.p 
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-subheadline mb-8"
-              >
-                Managing business operations shouldn't be complicated. At Aethrix Systems, 
-                we specialize in Odoo ERP implementation and customization to connect your teams, 
-                automate workflows, and deliver clarity across operations.
-              </motion.p>
+        <section className="py-24 bg-gradient-hero text-primary-foreground overflow-hidden relative">
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-20 left-20 w-32 h-32 border border-white/20 rounded-lg rotate-12"></div>
+            <div className="absolute top-40 right-32 w-24 h-24 border border-white/20 rounded-full"></div>
+            <div className="absolute bottom-32 left-1/3 w-16 h-16 bg-white/10 rounded-lg rotate-45"></div>
+            <div className="absolute bottom-20 right-20 w-20 h-20 border border-white/20 rounded-lg -rotate-12"></div>
+          </div>
+          
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
               >
-                <Button size="lg" variant="hero" asChild>
-                  <Link to="/consultation" className="flex items-center gap-2">
-                    Get ERP Consultation
-                    <ArrowRight className="w-5 h-5" />
-                  </Link>
-                </Button>
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-6">
+                  <Settings className="w-4 h-4" />
+                  Enterprise Resource Planning
+                </div>
+                <h1 className="text-display mb-6">
+                  ERP That{" "}
+                  <span className="text-accent">Fits Your Business</span>
+                </h1>
+                <p className="text-subheadline mb-8 text-primary-foreground/90">
+                  Managing business operations shouldn't be complicated. At Aethrix Systems, 
+                  we specialize in Odoo ERP implementation and customization to connect your teams, 
+                  automate workflows, and deliver clarity across operations.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                  <Button size="lg" variant="hero" asChild>
+                    <Link to="/consultation" className="flex items-center gap-2">
+                      Get ERP Consultation
+                      <ArrowRight className="w-5 h-5" />
+                    </Link>
+                  </Button>
+                  <Button size="lg" variant="outline" className="bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20">
+                    View Demo
+                  </Button>
+                </div>
+                
+                {/* Key Metrics */}
+                <div className="grid grid-cols-3 gap-4 pt-4 border-t border-white/20">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-accent">95%</div>
+                    <div className="text-sm text-primary-foreground/80">Success Rate</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-accent">30+</div>
+                    <div className="text-sm text-primary-foreground/80">Modules</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-accent">6-12</div>
+                    <div className="text-sm text-primary-foreground/80">Weeks Deploy</div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Visual ERP Flow Diagram */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="relative"
+              >
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+                  <div className="text-center mb-6">
+                    <h3 className="text-xl font-semibold mb-2">ERP Integration Flow</h3>
+                    <p className="text-sm text-primary-foreground/80">Complete business process integration</p>
+                  </div>
+                  
+                  {/* Flow Diagram */}
+                  <div className="space-y-4">
+                    {[
+                      { icon: Users, label: "CRM & Sales", color: "bg-blue-500" },
+                      { icon: Package, label: "Inventory & MRP", color: "bg-green-500" },
+                      { icon: CreditCard, label: "Accounting & Finance", color: "bg-yellow-500" },
+                      { icon: Truck, label: "Purchase & Supply", color: "bg-purple-500" },
+                      { icon: BarChart3, label: "Reporting & Analytics", color: "bg-red-500" }
+                    ].map((item, index) => {
+                      const IconComponent = item.icon;
+                      return (
+                        <motion.div
+                          key={item.label}
+                          initial={{ opacity: 0, x: 20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                          className="flex items-center gap-4 p-3 bg-white/10 rounded-lg border border-white/20"
+                        >
+                          <div className={`w-10 h-10 ${item.color} rounded-lg flex items-center justify-center`}>
+                            <IconComponent className="w-5 h-5 text-white" />
+                          </div>
+                          <div className="flex-1">
+                            <div className="text-sm font-medium">{item.label}</div>
+                            <div className="w-full bg-white/20 rounded-full h-1.5 mt-1">
+                              <motion.div
+                                className="bg-accent h-1.5 rounded-full"
+                                initial={{ width: 0 }}
+                                animate={{ width: `${85 + index * 3}%` }}
+                                transition={{ duration: 1, delay: 0.5 + index * 0.1 }}
+                              />
+                            </div>
+                          </div>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                </div>
               </motion.div>
             </div>
           </div>
         </section>
 
         {/* Features Section */}
-        <section className="py-24">
+        <section className="py-24 bg-gradient-to-br from-muted/30 via-background to-muted/50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold mb-4">Comprehensive ERP Solutions</h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                From implementation to ongoing optimization, we deliver ERP solutions that grow with your business.
-              </p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+              >
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-medium mb-4">
+                  <Workflow className="w-4 h-4" />
+                  Comprehensive Solutions
+                </div>
+                <h2 className="text-3xl font-bold mb-4">ERP Solutions That Scale</h2>
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                  From implementation to ongoing optimization, we deliver ERP solutions that grow with your business.
+                </p>
+              </motion.div>
             </div>
+            
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {features.map((feature, index) => {
                 const IconComponent = feature.icon;
@@ -127,26 +214,81 @@ const ERP = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     viewport={{ once: true }}
+                    className="group"
                   >
-                    <Card className="group hover:shadow-large transition-smooth border-border hover:border-accent/50 bg-card h-full">
-                      <CardHeader className="space-y-4">
-                        <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center group-hover:scale-110 transition-bounce">
-                          <IconComponent className="w-6 h-6 text-primary-foreground" />
-                        </div>
+                    <Card className="h-full bg-gradient-to-br from-card via-card to-card/50 border-border/50 hover:border-accent/30 transition-all duration-300 hover:shadow-xl overflow-hidden relative">
+                      {/* Background accent */}
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-accent/5 to-transparent rounded-bl-full"></div>
+                      
+                      <CardHeader className="space-y-4 relative z-10">
+                        <motion.div 
+                          className="w-14 h-14 bg-gradient-to-br from-accent to-accent/80 rounded-xl flex items-center justify-center shadow-lg"
+                          whileHover={{ scale: 1.05 }}
+                          transition={{ type: "spring", stiffness: 300 }}
+                        >
+                          <IconComponent className="w-7 h-7 text-white" />
+                        </motion.div>
                         <div>
-                          <CardTitle className="text-xl group-hover:text-accent transition-smooth">
+                          <CardTitle className="text-xl group-hover:text-accent transition-colors duration-300 mb-2">
                             {feature.title}
                           </CardTitle>
-                          <CardDescription className="mt-2">
+                          <CardDescription className="text-base leading-relaxed">
                             {feature.description}
                           </CardDescription>
                         </div>
                       </CardHeader>
+                      
+                      {/* Hover effect indicator */}
+                      <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-accent/20 via-accent to-accent/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
                     </Card>
                   </motion.div>
                 );
               })}
             </div>
+            
+            {/* Visual Process Flow */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="mt-20"
+            >
+              <div className="text-center mb-12">
+                <h3 className="text-2xl font-bold mb-4">Our Implementation Process</h3>
+                <p className="text-muted-foreground">A proven methodology for successful ERP deployment</p>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                {[
+                  { step: "01", title: "Discovery", desc: "Business analysis & requirements", icon: "🔍" },
+                  { step: "02", title: "Design", desc: "System architecture & workflows", icon: "🎨" },
+                  { step: "03", title: "Deploy", desc: "Implementation & data migration", icon: "🚀" },
+                  { step: "04", title: "Optimize", desc: "Training & ongoing support", icon: "⚡" }
+                ].map((phase, index) => (
+                  <motion.div
+                    key={phase.step}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="relative"
+                  >
+                    <div className="bg-white rounded-xl p-6 shadow-md border border-border/50 hover:shadow-lg transition-shadow duration-300 text-center">
+                      <div className="text-3xl mb-3">{phase.icon}</div>
+                      <div className="text-xs font-semibold text-accent mb-2">{phase.step}</div>
+                      <h4 className="font-bold mb-2">{phase.title}</h4>
+                      <p className="text-sm text-muted-foreground">{phase.desc}</p>
+                    </div>
+                    
+                    {/* Connection line */}
+                    {index < 3 && (
+                      <div className="hidden md:block absolute top-1/2 -right-3 w-6 h-0.5 bg-gradient-to-r from-accent/60 to-accent/20"></div>
+                    )}
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </section>
 

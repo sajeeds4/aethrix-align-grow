@@ -4,7 +4,7 @@ import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
-import { Cloud as CloudIcon, Shield, Lock, Server, Gauge, ArrowRight, ChevronRight } from "lucide-react";
+import { Cloud as CloudIcon, Shield, Lock, Server, Gauge, ArrowRight, ChevronRight, Globe, Database } from "lucide-react";
 import { useEffect } from "react";
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
@@ -61,26 +61,144 @@ const Cloud = () => {
         </section>
 
         {/* Pillars */}
-        <section className="py-24">
+        <section className="py-24 bg-gradient-to-br from-muted/30 via-background to-muted/50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="text-center mb-16">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+              >
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-medium mb-4">
+                  <CloudIcon className="w-4 h-4" />
+                  Cloud Architecture
+                </div>
+                <h2 className="text-3xl font-bold mb-4">Enterprise Cloud Solutions</h2>
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                  Scalable, secure, and cost-effective cloud infrastructure that grows with your business.
+                </p>
+              </motion.div>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
               {pillars.map((p, i) => {
                 const Icon = p.icon
                 return (
-                  <motion.div key={p.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: i * 0.1 }} viewport={{ once: true }}>
-                    <Card className="h-full bg-card border-border">
-                      <CardHeader>
-                        <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-2">
-                          <Icon className="w-6 h-6 text-primary" />
-                        </div>
-                        <CardTitle>{p.title}</CardTitle>
-                        <CardDescription>{p.description}</CardDescription>
+                  <motion.div 
+                    key={p.title} 
+                    initial={{ opacity: 0, y: 30 }} 
+                    whileInView={{ opacity: 1, y: 0 }} 
+                    transition={{ duration: 0.6, delay: i * 0.1 }} 
+                    viewport={{ once: true }}
+                    className="group"
+                  >
+                    <Card className="h-full bg-gradient-to-br from-card via-card to-card/50 border-border/50 hover:border-accent/30 transition-all duration-300 hover:shadow-xl overflow-hidden relative">
+                      {/* Background accent */}
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-accent/5 to-transparent rounded-bl-full"></div>
+                      
+                      <CardHeader className="relative z-10">
+                        <motion.div 
+                          className="w-14 h-14 bg-gradient-to-br from-accent to-accent/80 rounded-xl flex items-center justify-center shadow-lg mb-4"
+                          whileHover={{ scale: 1.05 }}
+                          transition={{ type: "spring", stiffness: 300 }}
+                        >
+                          <Icon className="w-7 h-7 text-white" />
+                        </motion.div>
+                        <CardTitle className="group-hover:text-accent transition-colors duration-300 mb-2">
+                          {p.title}
+                        </CardTitle>
+                        <CardDescription className="text-base leading-relaxed">
+                          {p.description}
+                        </CardDescription>
                       </CardHeader>
+                      
+                      {/* Hover effect indicator */}
+                      <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-accent/20 via-accent to-accent/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
                     </Card>
                   </motion.div>
                 )
               })}
             </div>
+
+            {/* Cloud Infrastructure Diagram */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-2xl p-8 shadow-xl border border-border/20"
+            >
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold mb-4">Multi-Cloud Architecture</h3>
+                <p className="text-muted-foreground">Resilient, scalable infrastructure design</p>
+              </div>
+              
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                {/* Frontend Layer */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  viewport={{ once: true }}
+                  className="text-center"
+                >
+                  <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl p-6 mb-4">
+                    <Globe className="w-8 h-8 text-white mx-auto mb-2" />
+                    <h4 className="text-white font-semibold">Frontend</h4>
+                  </div>
+                  <div className="space-y-2 text-sm text-muted-foreground">
+                    <div>CDN Distribution</div>
+                    <div>Edge Computing</div>
+                    <div>Static Site Hosting</div>
+                  </div>
+                </motion.div>
+
+                {/* Application Layer */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  viewport={{ once: true }}
+                  className="text-center"
+                >
+                  <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-xl p-6 mb-4">
+                    <Server className="w-8 h-8 text-white mx-auto mb-2" />
+                    <h4 className="text-white font-semibold">Application</h4>
+                  </div>
+                  <div className="space-y-2 text-sm text-muted-foreground">
+                    <div>Kubernetes Clusters</div>
+                    <div>Auto Scaling</div>
+                    <div>Load Balancing</div>
+                  </div>
+                </motion.div>
+
+                {/* Data Layer */}
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.6 }}
+                  viewport={{ once: true }}
+                  className="text-center"
+                >
+                  <div className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl p-6 mb-4">
+                    <Database className="w-8 h-8 text-white mx-auto mb-2" />
+                    <h4 className="text-white font-semibold">Data</h4>
+                  </div>
+                  <div className="space-y-2 text-sm text-muted-foreground">
+                    <div>Multi-Region DBs</div>
+                    <div>Backup & Recovery</div>
+                    <div>Data Analytics</div>
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* Connection Lines */}
+              <div className="flex justify-center items-center mt-8 space-x-8">
+                <div className="hidden lg:block w-16 h-0.5 bg-gradient-to-r from-blue-400 to-green-400"></div>
+                <div className="hidden lg:block w-16 h-0.5 bg-gradient-to-r from-green-400 to-purple-400"></div>
+              </div>
+            </motion.div>
           </div>
         </section>
 

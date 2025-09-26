@@ -48,22 +48,141 @@ const Development = () => {
           </ol>
         </nav>
         {/* Hero */}
-        <section className="py-24 bg-gradient-hero text-primary-foreground">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto text-center">
-              <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="text-display mb-6">
-                Web & App Development that <span className="text-accent">Ships</span>
-              </motion.h1>
-              <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="text-subheadline mb-8">
-                We build fast, accessible, and secure products—from idea to production—with a focus on measurable business outcomes.
-              </motion.p>
-              <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}>
-                <Button size="lg" variant="hero" asChild>
-                  <Link to="/consultation" className="flex items-center gap-2">
-                    Start Your Project
-                    <ArrowRight className="w-5 h-5" />
-                  </Link>
-                </Button>
+        <section className="py-24 bg-gradient-hero text-primary-foreground overflow-hidden relative">
+          {/* Code-like background pattern */}
+          <div className="absolute inset-0 opacity-5">
+            <div className="absolute top-20 left-10 font-mono text-xs text-white/30">
+              {"<div className='container'>"}
+            </div>
+            <div className="absolute top-32 right-20 font-mono text-xs text-white/30">
+              {"function buildApp() {"}
+            </div>
+            <div className="absolute bottom-40 left-1/4 font-mono text-xs text-white/30">
+              {"const [state, setState] = useState()"}
+            </div>
+            <div className="absolute bottom-20 right-32 font-mono text-xs text-white/30">
+              {"export default Component"}
+            </div>
+          </div>
+          
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-6">
+                  <Code2 className="w-4 h-4" />
+                  Full-Stack Development
+                </div>
+                <h1 className="text-display mb-6">
+                  Web & App Development that <span className="text-accent">Ships</span>
+                </h1>
+                <p className="text-subheadline mb-8 text-primary-foreground/90">
+                  We build fast, accessible, and secure products—from idea to production—with a focus on measurable business outcomes.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                  <Button size="lg" variant="hero" asChild>
+                    <Link to="/consultation" className="flex items-center gap-2">
+                      Start Your Project
+                      <ArrowRight className="w-5 h-5" />
+                    </Link>
+                  </Button>
+                  <Button size="lg" variant="outline" className="bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20">
+                    View Portfolio
+                  </Button>
+                </div>
+                
+                {/* Tech Stack Preview */}
+                <div className="flex flex-wrap gap-2 pt-4 border-t border-white/20">
+                  {["React", "TypeScript", "Node.js", "Docker", "AWS"].map((tech) => (
+                    <span key={tech} className="px-3 py-1 bg-white/10 rounded-full text-xs font-medium">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+
+              {/* Interactive Code Preview */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="relative"
+              >
+                <div className="bg-slate-900/90 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-2xl">
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="flex gap-2">
+                      <div className="w-3 h-3 bg-red-400 rounded-full"></div>
+                      <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                      <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+                    </div>
+                    <div className="text-sm text-white/60 ml-2">modern-app.tsx</div>
+                  </div>
+                  
+                  <div className="font-mono text-sm space-y-2">
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.5, delay: 0.5 }}
+                      className="text-blue-300"
+                    >
+                      {"import { useState, useEffect } from 'react'"}
+                    </motion.div>
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.5, delay: 0.7 }}
+                      className="text-purple-300"
+                    >
+                      {"import { motion } from 'framer-motion'"}
+                    </motion.div>
+                    <div className="h-2"></div>
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.5, delay: 0.9 }}
+                      className="text-yellow-300"
+                    >
+                      {"export default function App() {"}
+                    </motion.div>
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.5, delay: 1.1 }}
+                      className="text-green-300 ml-4"
+                    >
+                      {"return ("}
+                    </motion.div>
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.5, delay: 1.3 }}
+                      className="text-pink-300 ml-8"
+                    >
+                      {"<motion.div animate={{ scale: 1 }}>"}
+                    </motion.div>
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.5, delay: 1.5 }}
+                      className="text-cyan-300 ml-12"
+                    >
+                      {"<h1>Beautiful & Fast</h1>"}
+                    </motion.div>
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.5, delay: 1.7 }}
+                      className="text-pink-300 ml-8"
+                    >
+                      {"</motion.div>"}
+                    </motion.div>
+                    <div className="text-green-300 ml-4">{"  )"}</div>
+                    <div className="text-yellow-300">{"}"}</div>
+                  </div>
+                </div>
               </motion.div>
             </div>
           </div>
