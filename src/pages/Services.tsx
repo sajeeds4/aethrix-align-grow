@@ -26,7 +26,7 @@ const Services = () => {
         "Customization for unique workflows",
         "Ongoing support and optimization"
       ],
-      price: "Starting at $5,000"
+      cta: "Get ERP Consultation"
     },
     {
       icon: Globe,
@@ -39,7 +39,7 @@ const Services = () => {
         "Mobile-first responsive apps",
         "API integrations and backend systems"
       ],
-      price: "Starting at $3,000"
+      cta: "Schedule a Demo"
     },
     {
       icon: Cloud,
@@ -52,7 +52,7 @@ const Services = () => {
         "Infrastructure monitoring & management",
         "Security and compliance built-in"
       ],
-      price: "Starting at $2,000"
+      cta: "Talk to Cloud Experts"
     },
     {
       icon: Brain,
@@ -65,7 +65,7 @@ const Services = () => {
         "Predictive forecasting & demand planning",
         "Workflow automation across departments"
       ],
-      price: "Starting at $4,000"
+      cta: "Get AI Consultation"
     },
     {
       icon: MessageSquare,
@@ -78,7 +78,7 @@ const Services = () => {
         "Process optimization consulting",
         "Vendor selection and management"
       ],
-      price: "Starting at $1,500"
+      cta: "Start Consultation"
     }
   ];
 
@@ -125,10 +125,9 @@ const Services = () => {
                         <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center group-hover:scale-110 transition-bounce">
                           <IconComponent className="w-6 h-6 text-primary-foreground" />
                         </div>
-                        <div className="text-right">
-                          <div className="text-sm text-muted-foreground">Starting at</div>
-                          <div className="text-lg font-bold text-accent">{service.price}</div>
-                        </div>
+                        <Button size="sm" variant="outline" asChild>
+                          <Link to="/consultation">Get Quote</Link>
+                        </Button>
                       </div>
                       <div>
                         <CardTitle className="text-2xl group-hover:text-accent transition-smooth">
@@ -149,8 +148,8 @@ const Services = () => {
                         ))}
                       </ul>
                       <Button className="w-full" variant="cta" asChild>
-                        <Link to={service.href} className="flex items-center justify-center gap-2">
-                          Learn More
+                        <Link to="/consultation" className="flex items-center justify-center gap-2">
+                          {service.cta}
                           <ArrowRight className="w-4 h-4" />
                         </Link>
                       </Button>

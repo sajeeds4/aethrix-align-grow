@@ -74,21 +74,31 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Industries */}
-          <div>
-            <h3 className="font-semibold text-lg mb-4">Industries</h3>
-            <ul className="space-y-2">
-              {industries.map((item) => (
-                <li key={item.name}>
-                  <Link
-                    to={item.href}
-                    className="text-primary-foreground/80 hover:text-primary-foreground transition-smooth text-sm"
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          {/* Contact */}
+          <div className="space-y-4">
+            <h3 className="font-semibold text-lg mb-4">Contact</h3>
+            <div className="space-y-3 text-sm">
+              <div className="space-y-2">
+                <p>
+                  <a href="mailto:info@aethrixsystems.com" className="text-accent hover:text-accent/80 transition-smooth">
+                    info@aethrixsystems.com
+                  </a>
+                </p>
+                <p>
+                  <a href="tel:+19175649475" className="text-accent hover:text-accent/80 transition-smooth">
+                    +1 917 564 9475
+                  </a>
+                </p>
+              </div>
+              <div className="pt-2">
+                <Link
+                  to="/consultation"
+                  className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-4 py-2 rounded-md hover:bg-accent/90 transition-smooth text-sm font-medium"
+                >
+                  Get Free Consultation
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
 

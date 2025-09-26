@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -25,21 +26,36 @@ const HeroSection = () => {
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-display lg:text-7xl mb-6 animate-fade-in">
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-display lg:text-7xl mb-6"
+          >
             Smarter Technology.{" "}
             <span className="bg-gradient-to-r from-accent to-primary-foreground bg-clip-text text-transparent">
               Stronger Business.
             </span>
-          </h1>
+          </motion.h1>
 
           {/* Sub-headline */}
-          <p className="text-subheadline lg:text-2xl mb-8 max-w-3xl mx-auto animate-slide-up text-primary-foreground/90">
+          <motion.p 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-subheadline lg:text-2xl mb-8 max-w-3xl mx-auto text-primary-foreground/90"
+          >
             Aethrix Systems delivers ERP, AI, cloud, and enterprise IT solutions that help 
             businesses simplify operations, scale efficiently, and innovate with confidence.
-          </p>
+          </motion.p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 animate-scale-in">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
+          >
             <Button size="lg" variant="hero" asChild>
               <Link to="/consultation" className="flex items-center gap-2">
                 Start Your Transformation
@@ -52,10 +68,15 @@ const HeroSection = () => {
                 Explore Services
               </Link>
             </Button>
-          </div>
+          </motion.div>
 
           {/* Trust Indicators */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-2xl mx-auto text-center">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-2xl mx-auto text-center"
+          >
             <div className="space-y-2">
               <div className="text-2xl font-bold text-accent">50+</div>
               <div className="text-sm text-primary-foreground/70">Projects Delivered</div>
@@ -72,7 +93,7 @@ const HeroSection = () => {
               <div className="text-2xl font-bold text-accent">5+</div>
               <div className="text-sm text-primary-foreground/70">Years Experience</div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
 
