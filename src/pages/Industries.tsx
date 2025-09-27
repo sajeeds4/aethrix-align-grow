@@ -403,6 +403,243 @@ export default function Industries() {
           </div>
         </div>
       </section>
+
+      {/* Industry Insights & Trends */}
+      <section className="py-16 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold mb-4">Industry Trends & Digital Transformation Insights</h2>
+              <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+                Stay ahead of industry evolution with our deep insights into emerging technologies, 
+                market trends, and transformation opportunities across different sectors.
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-8">
+              <Card className="shadow-xl">
+                <CardHeader>
+                  <CardTitle className="text-xl">Manufacturing 4.0 Revolution</CardTitle>
+                  <CardDescription>Smart factories and industrial IoT transformation</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <div className="font-medium">Predictive Maintenance</div>
+                        <div className="text-sm text-gray-600">AI-powered equipment monitoring reducing downtime by 35-50%</div>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <div className="font-medium">Digital Twins</div>
+                        <div className="text-sm text-gray-600">Virtual replicas enabling simulation and optimization</div>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <div className="font-medium">Supply Chain Visibility</div>
+                        <div className="text-sm text-gray-600">End-to-end tracking and real-time inventory optimization</div>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="shadow-xl">
+                <CardHeader>
+                  <CardTitle className="text-xl">Healthcare Digital Innovation</CardTitle>
+                  <CardDescription>Patient-centric care through technology</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <div className="font-medium">Telemedicine Platforms</div>
+                        <div className="text-sm text-gray-600">Remote patient care increasing accessibility by 40%</div>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <div className="font-medium">AI Diagnostics</div>
+                        <div className="text-sm text-gray-600">Machine learning enhancing diagnostic accuracy</div>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <div className="font-medium">Interoperability</div>
+                        <div className="text-sm text-gray-600">Seamless data exchange across healthcare systems</div>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="shadow-xl">
+                <CardHeader>
+                  <CardTitle className="text-xl">Fintech Revolution</CardTitle>
+                  <CardDescription>Digital-first financial services transformation</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-purple-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <div className="font-medium">Open Banking APIs</div>
+                        <div className="text-sm text-gray-600">Enabling third-party integrations and innovation</div>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-purple-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <div className="font-medium">Blockchain Integration</div>
+                        <div className="text-sm text-gray-600">Secure, transparent transaction processing</div>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-purple-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <div className="font-medium">RegTech Solutions</div>
+                        <div className="text-sm text-gray-600">Automated compliance and risk management</div>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="shadow-xl">
+                <CardHeader>
+                  <CardTitle className="text-xl">Retail Evolution</CardTitle>
+                  <CardDescription>Omnichannel customer experiences</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <div className="font-medium">Unified Commerce</div>
+                        <div className="text-sm text-gray-600">Seamless shopping across all channels and touchpoints</div>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <div className="font-medium">AI Personalization</div>
+                        <div className="text-sm text-gray-600">Dynamic product recommendations increasing sales by 25%</div>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <div className="font-medium">Sustainability Focus</div>
+                        <div className="text-sm text-gray-600">Green supply chain and circular economy initiatives</div>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Industry ROI Metrics */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold mb-4">Industry-Specific ROI & Performance Metrics</h2>
+              <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+                Real performance data from our industry implementations, demonstrating 
+                measurable business impact across different sectors.
+              </p>
+            </div>
+
+            <div className="overflow-x-auto">
+              <Table>
+                <TableCaption>Average performance improvements achieved across industry implementations</TableCaption>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="w-1/5">Industry</TableHead>
+                    <TableHead className="w-1/5">Efficiency Gains</TableHead>
+                    <TableHead className="w-1/5">Cost Reduction</TableHead>
+                    <TableHead className="w-1/5">Revenue Impact</TableHead>
+                    <TableHead className="w-1/5">Payback Period</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell className="font-medium">Manufacturing</TableCell>
+                    <TableCell>
+                      <div className="flex items-center gap-2">
+                        <div className="text-green-600 font-semibold">40-55%</div>
+                        <CheckCircle className="w-4 h-4 text-green-600" />
+                      </div>
+                    </TableCell>
+                    <TableCell>25-35% operational costs</TableCell>
+                    <TableCell>15-25% through optimization</TableCell>
+                    <TableCell>12-18 months</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">Healthcare</TableCell>
+                    <TableCell>
+                      <div className="flex items-center gap-2">
+                        <div className="text-green-600 font-semibold">30-45%</div>
+                        <CheckCircle className="w-4 h-4 text-green-600" />
+                      </div>
+                    </TableCell>
+                    <TableCell>20-30% administrative costs</TableCell>
+                    <TableCell>10-20% patient throughput</TableCell>
+                    <TableCell>18-24 months</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">Financial Services</TableCell>
+                    <TableCell>
+                      <div className="flex items-center gap-2">
+                        <div className="text-green-600 font-semibold">35-50%</div>
+                        <CheckCircle className="w-4 h-4 text-green-600" />
+                      </div>
+                    </TableCell>
+                    <TableCell>30-40% processing costs</TableCell>
+                    <TableCell>20-35% faster approvals</TableCell>
+                    <TableCell>15-20 months</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">Retail</TableCell>
+                    <TableCell>
+                      <div className="flex items-center gap-2">
+                        <div className="text-green-600 font-semibold">25-40%</div>
+                        <CheckCircle className="w-4 h-4 text-green-600" />
+                      </div>
+                    </TableCell>
+                    <TableCell>20-25% inventory costs</TableCell>
+                    <TableCell>15-30% sales increase</TableCell>
+                    <TableCell>10-15 months</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">Logistics</TableCell>
+                    <TableCell>
+                      <div className="flex items-center gap-2">
+                        <div className="text-green-600 font-semibold">45-60%</div>
+                        <CheckCircle className="w-4 h-4 text-green-600" />
+                      </div>
+                    </TableCell>
+                    <TableCell>35-45% fuel & routing</TableCell>
+                    <TableCell>20-25% capacity utilization</TableCell>
+                    <TableCell>8-12 months</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

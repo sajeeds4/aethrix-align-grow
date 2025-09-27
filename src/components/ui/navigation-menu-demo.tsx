@@ -22,23 +22,33 @@ export function NavigationMenuDemo() {
   const services = [
     {
       title: "ERP Solutions",
-  to: "/erp",
+      to: "/erp",
       description: "Enterprise Resource Planning solutions to streamline your business operations.",
     },
     {
       title: "Web & App Development",
-  to: "/development",
+      to: "/development",
       description: "Custom web and mobile applications built with modern technologies.",
     },
     {
       title: "Cloud & Infrastructure",
-  to: "/cloud",
+      to: "/cloud",
       description: "Scalable cloud solutions and infrastructure management services.",
     },
     {
       title: "AI & Automation",
-  to: "/ai",
+      to: "/ai",
       description: "Advanced AI solutions and automation services for business growth.",
+    },
+    {
+      title: "Service Configurator",
+      to: "/service-configurator",
+      description: "Interactive tool to configure and price your custom solution.",
+    },
+    {
+      title: "Implementation Process",
+      to: "/implementation-methodology",
+      description: "Detailed methodology and proven approach for successful delivery.",
     },
   ]
 
@@ -55,7 +65,7 @@ export function NavigationMenuDemo() {
         <NavigationMenuItem>
           <NavigationMenuTrigger className={cn(servicesActive && "bg-accent text-accent-foreground")}>Services</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[700px] lg:grid-cols-3">
               {services.map((service) => (
                 <ListItem
                   key={service.title}

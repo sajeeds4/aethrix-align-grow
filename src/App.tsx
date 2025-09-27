@@ -15,6 +15,8 @@ const About = lazy(() => import("./pages/About"));
 const Development = lazy(() => import("./pages/Development"));
 const Cloud = lazy(() => import("./pages/Cloud"));
 const AI = lazy(() => import("./pages/AI"));
+const ServiceConfigurator = lazy(() => import("./pages/ServiceConfigurator"));
+const ImplementationMethodology = lazy(() => import("./pages/ImplementationMethodology"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -37,6 +39,8 @@ const App = () => (
             <Route path="/development" element={<Development />} />
             <Route path="/cloud" element={<Cloud />} />
             <Route path="/ai" element={<AI />} />
+            <Route path="/service-configurator" element={<ServiceConfigurator />} />
+            <Route path="/implementation-methodology" element={<ImplementationMethodology />} />
             <Route path="/case-studies" element={<CaseStudies />} />
             <Route path="/contact" element={<Consultation />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

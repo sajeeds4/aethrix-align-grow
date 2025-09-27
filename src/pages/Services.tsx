@@ -11,9 +11,15 @@ import {
   MessageSquare,
   Shield,
   ArrowRight,
-  CheckCircle 
+  CheckCircle,
+  Calculator,
+  BarChart3
 } from "lucide-react";
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { InteractiveArchitectureDiagram } from "@/components/InteractiveArchitectureDiagram";
+import { BeforeAfterComparison } from "@/components/BeforeAfterComparison";
+import { ProcessInfographic } from "@/components/ProcessInfographic";
+import { TechnologyStackVisualization } from "@/components/TechnologyStackVisualization";
 
 const Services = () => {
   const services = [
@@ -1271,6 +1277,985 @@ const Services = () => {
                 </TableRow>
               </TableBody>
             </Table>
+          </div>
+        </section>
+
+        {/* Interactive Service Configurator Section */}
+        <section className="py-16 bg-gradient-to-br from-blue-50 to-purple-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto text-center mb-12">
+              <h2 className="text-3xl font-bold mb-6">Interactive Service Configurator</h2>
+              <p className="text-lg text-gray-700 mb-8">
+                Get personalized solution recommendations and pricing estimates based on your specific requirements.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" asChild className="flex items-center gap-2">
+                  <Link to="/service-configurator">
+                    <Calculator className="w-5 h-5" />
+                    Configure Your Solution
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" asChild className="flex items-center gap-2">
+                  <Link to="/implementation-methodology">
+                    <BarChart3 className="w-5 h-5" />
+                    View Implementation Process
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Interactive Architecture Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl font-bold mb-4">Interactive Solution Architecture</h2>
+                <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+                  Explore our modern, scalable architecture that powers enterprise solutions. 
+                  Click on components to learn about technologies, integrations, and benefits.
+                </p>
+              </div>
+              <InteractiveArchitectureDiagram />
+            </div>
+          </div>
+        </section>
+
+        {/* Before/After Transformation Results */}
+        <section className="py-16 bg-gradient-to-br from-gray-50 to-blue-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl font-bold mb-4">Real Transformation Results</h2>
+                <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+                  See the quantifiable impact of our solutions through detailed before/after comparisons 
+                  from actual client implementations. Results speak louder than promises.
+                </p>
+              </div>
+              <BeforeAfterComparison />
+            </div>
+          </div>
+        </section>
+
+        {/* Technology Stack Visualization */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl font-bold mb-4">Our Technology Stack</h2>
+                <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+                  We leverage cutting-edge technologies and proven frameworks to deliver 
+                  robust, scalable solutions. Explore our expertise across different technology domains.
+                </p>
+              </div>
+              <TechnologyStackVisualization />
+            </div>
+          </div>
+        </section>
+
+        {/* Process Infographics */}
+        <section className="py-16 bg-gradient-to-br from-purple-50 to-blue-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl font-bold mb-4">Implementation Process Overview</h2>
+                <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+                  Our proven methodologies ensure successful delivery across all service areas. 
+                  Each process is tailored to specific technology domains while maintaining consistent quality standards.
+                </p>
+              </div>
+              
+              <div className="space-y-12">
+                <div className="bg-white rounded-xl p-8 shadow-lg">
+                  <h3 className="text-2xl font-bold text-center mb-8 text-blue-600">ERP Implementation Process</h3>
+                  <ProcessInfographic type="erp" animated={true} />
+                </div>
+                
+                <div className="bg-white rounded-xl p-8 shadow-lg">
+                  <h3 className="text-2xl font-bold text-center mb-8 text-purple-600">Custom Development Process</h3>
+                  <ProcessInfographic type="development" animated={true} />
+                </div>
+                
+                <div className="bg-white rounded-xl p-8 shadow-lg">
+                  <h3 className="text-2xl font-bold text-center mb-8 text-cyan-600">Cloud Migration Process</h3>
+                  <ProcessInfographic type="cloud" animated={true} />
+                </div>
+                
+                <div className="bg-white rounded-xl p-8 shadow-lg">
+                  <h3 className="text-2xl font-bold text-center mb-8 text-red-600">AI Implementation Process</h3>
+                  <ProcessInfographic type="ai" animated={true} />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Service Specializations */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
+                <h2 className="text-3xl font-bold mb-6">Industry-Specific Expertise</h2>
+                <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+                  Deep domain knowledge across key industries enables us to deliver solutions 
+                  that address specific challenges, regulations, and business requirements.
+                </p>
+              </div>
+
+              <div className="grid lg:grid-cols-2 gap-12">
+                <Card className="shadow-xl">
+                  <CardHeader>
+                    <CardTitle className="text-2xl">Manufacturing Excellence</CardTitle>
+                    <CardDescription>
+                      Specialized solutions for manufacturing operations and supply chain optimization
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="bg-blue-50 p-4 rounded-lg">
+                        <h4 className="font-semibold text-blue-800 mb-2">Production Planning</h4>
+                        <ul className="text-sm space-y-1">
+                          <li>• MRP/MPS optimization</li>
+                          <li>• Capacity planning</li>
+                          <li>• Resource scheduling</li>
+                        </ul>
+                      </div>
+                      <div className="bg-green-50 p-4 rounded-lg">
+                        <h4 className="font-semibold text-green-800 mb-2">Quality Management</h4>
+                        <ul className="text-sm space-y-1">
+                          <li>• QC workflows</li>
+                          <li>• Compliance tracking</li>
+                          <li>• Audit trails</li>
+                        </ul>
+                      </div>
+                      <div className="bg-purple-50 p-4 rounded-lg">
+                        <h4 className="font-semibold text-purple-800 mb-2">Supply Chain</h4>
+                        <ul className="text-sm space-y-1">
+                          <li>• Vendor management</li>
+                          <li>• Inventory optimization</li>
+                          <li>• Logistics coordination</li>
+                        </ul>
+                      </div>
+                      <div className="bg-orange-50 p-4 rounded-lg">
+                        <h4 className="font-semibold text-orange-800 mb-2">IoT Integration</h4>
+                        <ul className="text-sm space-y-1">
+                          <li>• Equipment monitoring</li>
+                          <li>• Predictive maintenance</li>
+                          <li>• Real-time dashboards</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="shadow-xl">
+                  <CardHeader>
+                    <CardTitle className="text-2xl">Healthcare Innovation</CardTitle>
+                    <CardDescription>
+                      HIPAA-compliant solutions for healthcare providers and medical organizations
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="bg-red-50 p-4 rounded-lg">
+                        <h4 className="font-semibold text-red-800 mb-2">Patient Management</h4>
+                        <ul className="text-sm space-y-1">
+                          <li>• Electronic Health Records</li>
+                          <li>• Appointment scheduling</li>
+                          <li>• Patient portals</li>
+                        </ul>
+                      </div>
+                      <div className="bg-blue-50 p-4 rounded-lg">
+                        <h4 className="font-semibold text-blue-800 mb-2">Compliance & Security</h4>
+                        <ul className="text-sm space-y-1">
+                          <li>• HIPAA compliance</li>
+                          <li>• Data encryption</li>
+                          <li>• Access controls</li>
+                        </ul>
+                      </div>
+                      <div className="bg-green-50 p-4 rounded-lg">
+                        <h4 className="font-semibold text-green-800 mb-2">Clinical Operations</h4>
+                        <ul className="text-sm space-y-1">
+                          <li>• Lab integration</li>
+                          <li>• Billing automation</li>
+                          <li>• Insurance processing</li>
+                        </ul>
+                      </div>
+                      <div className="bg-purple-50 p-4 rounded-lg">
+                        <h4 className="font-semibold text-purple-800 mb-2">AI-Powered Insights</h4>
+                        <ul className="text-sm space-y-1">
+                          <li>• Diagnostic assistance</li>
+                          <li>• Treatment recommendations</li>
+                          <li>• Population health analytics</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Success Metrics Dashboard */}
+        <section className="py-16 bg-gradient-to-br from-gray-50 to-blue-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl font-bold mb-4">Proven Results Across Industries</h2>
+                <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+                  Our track record speaks for itself. Real metrics from real implementations 
+                  demonstrating the tangible value we deliver to our clients.
+                </p>
+              </div>
+
+              <div className="grid lg:grid-cols-4 gap-6 mb-12">
+                <Card className="bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-xl">
+                  <CardContent className="p-8 text-center">
+                    <div className="text-4xl font-bold mb-2">500+</div>
+                    <div className="text-blue-100">Successful Implementations</div>
+                  </CardContent>
+                </Card>
+                
+                <Card className="bg-gradient-to-br from-green-500 to-green-600 text-white shadow-xl">
+                  <CardContent className="p-8 text-center">
+                    <div className="text-4xl font-bold mb-2">98%</div>
+                    <div className="text-green-100">Client Satisfaction Rate</div>
+                  </CardContent>
+                </Card>
+                
+                <Card className="bg-gradient-to-br from-purple-500 to-purple-600 text-white shadow-xl">
+                  <CardContent className="p-8 text-center">
+                    <div className="text-4xl font-bold mb-2">45%</div>
+                    <div className="text-purple-100">Average Efficiency Gain</div>
+                  </CardContent>
+                </Card>
+                
+                <Card className="bg-gradient-to-br from-orange-500 to-orange-600 text-white shadow-xl">
+                  <CardContent className="p-8 text-center">
+                    <div className="text-4xl font-bold mb-2">18</div>
+                    <div className="text-orange-100">Months Average ROI</div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Detailed Performance Metrics */}
+              <div className="bg-white p-8 rounded-xl shadow-lg">
+                <h3 className="text-2xl font-bold mb-6 text-center">Key Performance Indicators</h3>
+                <div className="overflow-x-auto">
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead className="w-1/4">Service Area</TableHead>
+                        <TableHead className="w-1/4">Implementation Success Rate</TableHead>
+                        <TableHead className="w-1/4">Average Performance Improvement</TableHead>
+                        <TableHead className="w-1/4">Client Retention Rate</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      <TableRow>
+                        <TableCell className="font-medium">ERP Implementation</TableCell>
+                        <TableCell>
+                          <div className="flex items-center gap-2">
+                            <div className="text-green-600 font-semibold">96%</div>
+                            <CheckCircle className="w-4 h-4 text-green-600" />
+                          </div>
+                        </TableCell>
+                        <TableCell>35-50% efficiency gains</TableCell>
+                        <TableCell>94% (5+ year contracts)</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell className="font-medium">Cloud Migration</TableCell>
+                        <TableCell>
+                          <div className="flex items-center gap-2">
+                            <div className="text-green-600 font-semibold">99%</div>
+                            <CheckCircle className="w-4 h-4 text-green-600" />
+                          </div>
+                        </TableCell>
+                        <TableCell>40-60% cost reduction</TableCell>
+                        <TableCell>97% (ongoing support)</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell className="font-medium">Custom Development</TableCell>
+                        <TableCell>
+                          <div className="flex items-center gap-2">
+                            <div className="text-green-600 font-semibold">98%</div>
+                            <CheckCircle className="w-4 h-4 text-green-600" />
+                          </div>
+                        </TableCell>
+                        <TableCell>25-40% productivity boost</TableCell>
+                        <TableCell>89% (repeat engagements)</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell className="font-medium">AI Implementation</TableCell>
+                        <TableCell>
+                          <div className="flex items-center gap-2">
+                            <div className="text-green-600 font-semibold">92%</div>
+                            <CheckCircle className="w-4 h-4 text-green-600" />
+                          </div>
+                        </TableCell>
+                        <TableCell>50-80% automation gains</TableCell>
+                        <TableCell>91% (expanding implementations)</TableCell>
+                      </TableRow>
+                    </TableBody>
+                  </Table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Advanced Service Methodologies */}
+        <section className="py-24 bg-gradient-to-br from-blue-50 to-purple-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                Advanced Implementation Methodologies
+              </h2>
+              
+              <div className="grid lg:grid-cols-2 gap-12">
+                <Card className="shadow-2xl border-0 overflow-hidden">
+                  <div className="bg-gradient-to-r from-blue-600 to-indigo-700 p-8 text-white">
+                    <h3 className="text-2xl font-bold mb-4">Agile-DevOps Integration Framework</h3>
+                    <p className="text-blue-100">Our proprietary methodology combining agile development practices with DevOps automation for enterprise-scale implementations.</p>
+                  </div>
+                  <CardContent className="p-8">
+                    <div className="space-y-6">
+                      <div className="border-l-4 border-blue-500 pl-6">
+                        <h4 className="text-lg font-semibold mb-3 text-blue-700">Phase 1: Strategic Foundation</h4>
+                        <div className="space-y-3 text-sm text-gray-700">
+                          <div className="bg-blue-50 p-4 rounded-lg">
+                            <div className="font-medium mb-2">Executive Alignment Workshop (Week 1-2)</div>
+                            <p>Comprehensive stakeholder alignment sessions involving C-suite executives, department heads, and key technical leaders. Includes business case development, ROI projections, risk assessment, and success metrics definition with detailed project charter creation.</p>
+                          </div>
+                          <div className="bg-green-50 p-4 rounded-lg">
+                            <div className="font-medium mb-2">Technical Architecture Assessment (Week 2-3)</div>
+                            <p>Deep-dive analysis of current technology infrastructure, legacy system evaluation, integration complexity assessment, security posture review, and scalability planning with future-state architecture design.</p>
+                          </div>
+                          <div className="bg-purple-50 p-4 rounded-lg">
+                            <div className="font-medium mb-2">Business Process Optimization (Week 3-4)</div>
+                            <p>End-to-end process mapping using BPMN 2.0 standards, automation opportunity identification, compliance requirements analysis, and change management impact assessment with optimized workflow design.</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="border-l-4 border-green-500 pl-6">
+                        <h4 className="text-lg font-semibold mb-3 text-green-700">Phase 2: Rapid Development Cycles</h4>
+                        <div className="space-y-3 text-sm text-gray-700">
+                          <div className="bg-green-50 p-4 rounded-lg">
+                            <div className="font-medium mb-2">Sprint-Based Development (2-week iterations)</div>
+                            <p>Agile development methodology with daily standups, sprint planning, retrospectives, and stakeholder demos. Each sprint includes feature development, automated testing, code review, and continuous integration with immediate feedback loops.</p>
+                          </div>
+                          <div className="bg-blue-50 p-4 rounded-lg">
+                            <div className="font-medium mb-2">Continuous Integration & Deployment</div>
+                            <p>Automated CI/CD pipelines with comprehensive testing suites, automated security scanning, performance monitoring, and blue-green deployment strategies ensuring zero-downtime releases and rollback capabilities.</p>
+                          </div>
+                          <div className="bg-orange-50 p-4 rounded-lg">
+                            <div className="font-medium mb-2">Quality Assurance Integration</div>
+                            <p>Embedded QA processes with automated unit testing, integration testing, performance testing, security scanning, and user acceptance testing maintaining 90%+ test coverage with automated reporting.</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="border-l-4 border-purple-500 pl-6">
+                        <h4 className="text-lg font-semibold mb-3 text-purple-700">Phase 3: Deployment & Optimization</h4>
+                        <div className="space-y-3 text-sm text-gray-700">
+                          <div className="bg-purple-50 p-4 rounded-lg">
+                            <div className="font-medium mb-2">Phased Production Deployment</div>
+                            <p>Strategic rollout approach with pilot groups, gradual user adoption, performance monitoring, and continuous optimization. Includes load balancing, auto-scaling configuration, and disaster recovery implementation.</p>
+                          </div>
+                          <div className="bg-teal-50 p-4 rounded-lg">
+                            <div className="font-medium mb-2">User Training & Change Management</div>
+                            <p>Comprehensive training programs including role-based learning paths, hands-on workshops, documentation creation, and change champion networks ensuring 95%+ user adoption rates.</p>
+                          </div>
+                          <div className="bg-red-50 p-4 rounded-lg">
+                            <div className="font-medium mb-2">Performance Monitoring & Analytics</div>
+                            <p>Real-time monitoring dashboards, performance analytics, user behavior tracking, and continuous improvement recommendations with proactive issue resolution and optimization strategies.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="shadow-2xl border-0 overflow-hidden">
+                  <div className="bg-gradient-to-r from-green-600 to-teal-700 p-8 text-white">
+                    <h3 className="text-2xl font-bold mb-4">Enterprise Security & Compliance Framework</h3>
+                    <p className="text-green-100">Comprehensive security-first approach ensuring enterprise-grade protection and regulatory compliance throughout the entire implementation lifecycle.</p>
+                  </div>
+                  <CardContent className="p-8">
+                    <div className="space-y-6">
+                      <div className="border-l-4 border-red-500 pl-6">
+                        <h4 className="text-lg font-semibold mb-3 text-red-700">Security Architecture Design</h4>
+                        <div className="space-y-3 text-sm text-gray-700">
+                          <div className="bg-red-50 p-4 rounded-lg">
+                            <div className="font-medium mb-2">Zero Trust Security Model</div>
+                            <p>Implementation of zero trust architecture with micro-segmentation, identity verification, least privilege access, and continuous security monitoring. Includes multi-factor authentication, device trust verification, and behavioral analytics.</p>
+                          </div>
+                          <div className="bg-orange-50 p-4 rounded-lg">
+                            <div className="font-medium mb-2">Data Protection & Encryption</div>
+                            <p>End-to-end encryption implementation with AES-256 encryption at rest and in transit, key management systems, secure communication protocols, and data loss prevention (DLP) solutions with comprehensive audit trails.</p>
+                          </div>
+                          <div className="bg-yellow-50 p-4 rounded-lg">
+                            <div className="font-medium mb-2">Vulnerability Management</div>
+                            <p>Continuous vulnerability scanning, penetration testing, security code review, dependency management, and automated security monitoring with real-time threat detection and incident response capabilities.</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="border-l-4 border-indigo-500 pl-6">
+                        <h4 className="text-lg font-semibold mb-3 text-indigo-700">Compliance Frameworks</h4>
+                        <div className="space-y-3 text-sm text-gray-700">
+                          <div className="bg-indigo-50 p-4 rounded-lg">
+                            <div className="font-medium mb-2">Regulatory Compliance Management</div>
+                            <p>Comprehensive compliance framework covering GDPR, HIPAA, SOX, PCI-DSS, and industry-specific regulations. Includes automated compliance monitoring, audit trail management, and regulatory reporting capabilities.</p>
+                          </div>
+                          <div className="bg-cyan-50 p-4 rounded-lg">
+                            <div className="font-medium mb-2">ISO 27001 Implementation</div>
+                            <p>Information Security Management System (ISMS) implementation following ISO 27001 standards with risk assessment, security controls implementation, and continuous improvement processes.</p>
+                          </div>
+                          <div className="bg-pink-50 p-4 rounded-lg">
+                            <div className="font-medium mb-2">Audit & Documentation</div>
+                            <p>Comprehensive documentation management, audit preparation, compliance reporting, and evidence collection with automated compliance dashboards and real-time compliance status monitoring.</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="border-l-4 border-orange-500 pl-6">
+                        <h4 className="text-lg font-semibold mb-3 text-orange-700">Risk Management & Business Continuity</h4>
+                        <div className="space-y-3 text-sm text-gray-700">
+                          <div className="bg-orange-50 p-4 rounded-lg">
+                            <div className="font-medium mb-2">Business Continuity Planning</div>
+                            <p>Comprehensive disaster recovery and business continuity planning with automated backup systems, failover mechanisms, recovery time objective (RTO) &lt; 4 hours, and recovery point objective (RPO) &lt; 1 hour.</p>
+                          </div>
+                          <div className="bg-emerald-50 p-4 rounded-lg">
+                            <div className="font-medium mb-2">Risk Assessment & Mitigation</div>
+                            <p>Continuous risk assessment with threat modeling, business impact analysis, risk scoring, and mitigation strategy development. Includes supply chain risk management and third-party risk assessment.</p>
+                          </div>
+                          <div className="bg-violet-50 p-4 rounded-lg">
+                            <div className="font-medium mb-2">Incident Response & Recovery</div>
+                            <p>24/7 security operations center (SOC) monitoring, automated incident response, forensic analysis capabilities, and crisis communication plans with executive escalation procedures.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Technology Stack Deep Dive */}
+        <section className="py-24 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-8xl mx-auto">
+              <h2 className="text-4xl font-bold mb-16 text-center bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+                Comprehensive Technology Stack Analysis
+              </h2>
+              
+              <div className="grid lg:grid-cols-3 gap-12 mb-16">
+                <Card className="shadow-xl border-0">
+                  <CardHeader className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
+                    <CardTitle className="text-xl">Frontend Development Excellence</CardTitle>
+                    <CardDescription className="text-blue-100">Modern, responsive, and performant user interfaces</CardDescription>
+                  </CardHeader>
+                  <CardContent className="p-8">
+                    <div className="space-y-6">
+                      <div>
+                        <h4 className="font-semibold mb-3 text-blue-700">Modern JavaScript Frameworks</h4>
+                        <div className="space-y-3">
+                          <div className="bg-blue-50 p-4 rounded-lg">
+                            <div className="flex justify-between items-center mb-2">
+                              <span className="font-medium">React 18 Ecosystem</span>
+                              <span className="text-sm bg-blue-100 text-blue-700 px-2 py-1 rounded">Expert</span>
+                            </div>
+                            <div className="text-sm text-gray-700 mb-2">
+                              Advanced React development with hooks, context API, suspense, concurrent features, and server components. 
+                              Includes state management with Redux Toolkit, Zustand, and React Query for optimal performance.
+                            </div>
+                            <div className="grid grid-cols-2 gap-2 text-xs">
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>Component Architecture</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>State Management</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>Performance Optimization</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>Testing Integration</span>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div className="bg-green-50 p-4 rounded-lg">
+                            <div className="flex justify-between items-center mb-2">
+                              <span className="font-medium">Vue.js 3 & Nuxt</span>
+                              <span className="text-sm bg-green-100 text-green-700 px-2 py-1 rounded">Expert</span>
+                            </div>
+                            <div className="text-sm text-gray-700 mb-2">
+                              Progressive Vue.js applications with Composition API, TypeScript integration, and Nuxt.js for server-side rendering. 
+                              Includes Pinia for state management and Vite for lightning-fast development experience.
+                            </div>
+                            <div className="grid grid-cols-2 gap-2 text-xs">
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>Composition API</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>SSR/SSG</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>TypeScript</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>PWA Features</span>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="bg-purple-50 p-4 rounded-lg">
+                            <div className="flex justify-between items-center mb-2">
+                              <span className="font-medium">Angular Enterprise</span>
+                              <span className="text-sm bg-purple-100 text-purple-700 px-2 py-1 rounded">Advanced</span>
+                            </div>
+                            <div className="text-sm text-gray-700 mb-2">
+                              Enterprise-grade Angular applications with RxJS, NgRx, Angular Material, and comprehensive testing suites. 
+                              Optimized for large-scale applications with lazy loading and micro-frontend architecture.
+                            </div>
+                            <div className="grid grid-cols-2 gap-2 text-xs">
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>Enterprise Architecture</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>RxJS Integration</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>Micro-frontends</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>Testing Framework</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h4 className="font-semibold mb-3 text-green-700">Styling & UI Frameworks</h4>
+                        <div className="space-y-2 text-sm">
+                          <div className="flex justify-between items-center bg-gray-50 p-2 rounded">
+                            <span>Tailwind CSS + Components</span>
+                            <span className="font-bold text-green-600">Expert</span>
+                          </div>
+                          <div className="flex justify-between items-center bg-gray-50 p-2 rounded">
+                            <span>Material-UI / Ant Design</span>
+                            <span className="font-bold text-blue-600">Expert</span>
+                          </div>
+                          <div className="flex justify-between items-center bg-gray-50 p-2 rounded">
+                            <span>Styled Components</span>
+                            <span className="font-bold text-purple-600">Advanced</span>
+                          </div>
+                          <div className="flex justify-between items-center bg-gray-50 p-2 rounded">
+                            <span>CSS-in-JS Solutions</span>
+                            <span className="font-bold text-orange-600">Advanced</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h4 className="font-semibold mb-3 text-purple-700">Performance & Optimization</h4>
+                        <div className="grid grid-cols-2 gap-3 text-sm">
+                          <div className="text-center bg-purple-50 p-3 rounded">
+                            <div className="font-bold text-purple-600">95+</div>
+                            <div className="text-xs">Lighthouse Score</div>
+                          </div>
+                          <div className="text-center bg-blue-50 p-3 rounded">
+                            <div className="font-bold text-blue-600">&lt;2s</div>
+                            <div className="text-xs">Load Time</div>
+                          </div>
+                          <div className="text-center bg-green-50 p-3 rounded">
+                            <div className="font-bold text-green-600">99%</div>
+                            <div className="text-xs">Uptime SLA</div>
+                          </div>
+                          <div className="text-center bg-orange-50 p-3 rounded">
+                            <div className="font-bold text-orange-600">A+</div>
+                            <div className="text-xs">Security Grade</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="shadow-xl border-0">
+                  <CardHeader className="bg-gradient-to-r from-green-600 to-emerald-600 text-white">
+                    <CardTitle className="text-xl">Backend Development Mastery</CardTitle>
+                    <CardDescription className="text-green-100">Scalable, secure, and performant server-side solutions</CardDescription>
+                  </CardHeader>
+                  <CardContent className="p-8">
+                    <div className="space-y-6">
+                      <div>
+                        <h4 className="font-semibold mb-3 text-green-700">Server Technologies & Frameworks</h4>
+                        <div className="space-y-3">
+                          <div className="bg-green-50 p-4 rounded-lg">
+                            <div className="flex justify-between items-center mb-2">
+                              <span className="font-medium">Node.js Ecosystem</span>
+                              <span className="text-sm bg-green-100 text-green-700 px-2 py-1 rounded">Expert</span>
+                            </div>
+                            <div className="text-sm text-gray-700 mb-2">
+                              Full-stack JavaScript development with Express.js, Fastify, NestJS, and Koa.js. Includes microservices architecture, 
+                              GraphQL APIs, real-time communication with WebSockets, and comprehensive testing with Jest and Supertest.
+                            </div>
+                            <div className="grid grid-cols-2 gap-2 text-xs">
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>RESTful APIs</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>GraphQL</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>Microservices</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>Real-time APIs</span>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="bg-blue-50 p-4 rounded-lg">
+                            <div className="flex justify-between items-center mb-2">
+                              <span className="font-medium">Python & Django/FastAPI</span>
+                              <span className="text-sm bg-blue-100 text-blue-700 px-2 py-1 rounded">Expert</span>
+                            </div>
+                            <div className="text-sm text-gray-700 mb-2">
+                              Scalable Python applications with Django REST framework, FastAPI for high-performance APIs, Celery for background tasks, 
+                              and comprehensive data processing with pandas, NumPy, and machine learning integration.
+                            </div>
+                            <div className="grid grid-cols-2 gap-2 text-xs">
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>Django REST</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>FastAPI</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>Data Processing</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>ML Integration</span>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="bg-purple-50 p-4 rounded-lg">
+                            <div className="flex justify-between items-center mb-2">
+                              <span className="font-medium">.NET Core & C#</span>
+                              <span className="text-sm bg-purple-100 text-purple-700 px-2 py-1 rounded">Advanced</span>
+                            </div>
+                            <div className="text-sm text-gray-700 mb-2">
+                              Enterprise .NET applications with ASP.NET Core, Entity Framework, SignalR for real-time features, 
+                              Azure integration, and comprehensive security implementation with Identity Framework.
+                            </div>
+                            <div className="grid grid-cols-2 gap-2 text-xs">
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>ASP.NET Core</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>Entity Framework</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>Azure Services</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>Identity Management</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h4 className="font-semibold mb-3 text-blue-700">Database & Data Management</h4>
+                        <div className="space-y-2 text-sm">
+                          <div className="flex justify-between items-center bg-gray-50 p-2 rounded">
+                            <span>PostgreSQL (Advanced)</span>
+                            <span className="font-bold text-green-600">Expert</span>
+                          </div>
+                          <div className="flex justify-between items-center bg-gray-50 p-2 rounded">
+                            <span>MongoDB (NoSQL)</span>
+                            <span className="font-bold text-blue-600">Expert</span>
+                          </div>
+                          <div className="flex justify-between items-center bg-gray-50 p-2 rounded">
+                            <span>Redis (Caching)</span>
+                            <span className="font-bold text-purple-600">Advanced</span>
+                          </div>
+                          <div className="flex justify-between items-center bg-gray-50 p-2 rounded">
+                            <span>Elasticsearch</span>
+                            <span className="font-bold text-orange-600">Advanced</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h4 className="font-semibold mb-3 text-purple-700">Performance Metrics</h4>
+                        <div className="grid grid-cols-2 gap-3 text-sm">
+                          <div className="text-center bg-purple-50 p-3 rounded">
+                            <div className="font-bold text-purple-600">10K+</div>
+                            <div className="text-xs">Concurrent Users</div>
+                          </div>
+                          <div className="text-center bg-blue-50 p-3 rounded">
+                            <div className="font-bold text-blue-600">&lt;100ms</div>
+                            <div className="text-xs">API Response</div>
+                          </div>
+                          <div className="text-center bg-green-50 p-3 rounded">
+                            <div className="font-bold text-green-600">99.9%</div>
+                            <div className="text-xs">API Uptime</div>
+                          </div>
+                          <div className="text-center bg-orange-50 p-3 rounded">
+                            <div className="font-bold text-orange-600">1M+</div>
+                            <div className="text-xs">Requests/Day</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="shadow-xl border-0">
+                  <CardHeader className="bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+                    <CardTitle className="text-xl">Cloud & Infrastructure Excellence</CardTitle>
+                    <CardDescription className="text-purple-100">Scalable, reliable, and secure cloud solutions</CardDescription>
+                  </CardHeader>
+                  <CardContent className="p-8">
+                    <div className="space-y-6">
+                      <div>
+                        <h4 className="font-semibold mb-3 text-purple-700">Cloud Platforms & Services</h4>
+                        <div className="space-y-3">
+                          <div className="bg-purple-50 p-4 rounded-lg">
+                            <div className="flex justify-between items-center mb-2">
+                              <span className="font-medium">Amazon Web Services</span>
+                              <span className="text-sm bg-purple-100 text-purple-700 px-2 py-1 rounded">Advanced Partner</span>
+                            </div>
+                            <div className="text-sm text-gray-700 mb-2">
+                              Comprehensive AWS cloud solutions including EC2, RDS, Lambda, S3, CloudFront, API Gateway, and advanced services like 
+                              EKS, Fargate, SageMaker, and comprehensive monitoring with CloudWatch and X-Ray.
+                            </div>
+                            <div className="grid grid-cols-2 gap-2 text-xs">
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>Serverless Architecture</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>Container Orchestration</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>Auto Scaling</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>ML/AI Services</span>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="bg-blue-50 p-4 rounded-lg">
+                            <div className="flex justify-between items-center mb-2">
+                              <span className="font-medium">Microsoft Azure</span>
+                              <span className="text-sm bg-blue-100 text-blue-700 px-2 py-1 rounded">Gold Partner</span>
+                            </div>
+                            <div className="text-sm text-gray-700 mb-2">
+                              Enterprise Azure solutions with App Services, Azure Functions, Cosmos DB, Azure DevOps, Active Directory integration, 
+                              and advanced analytics with Power BI and Azure Synapse Analytics.
+                            </div>
+                            <div className="grid grid-cols-2 gap-2 text-xs">
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>Enterprise Integration</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>DevOps Pipeline</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>Cognitive Services</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>Hybrid Cloud</span>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="bg-green-50 p-4 rounded-lg">
+                            <div className="flex justify-between items-center mb-2">
+                              <span className="font-medium">Google Cloud Platform</span>
+                              <span className="text-sm bg-green-100 text-green-700 px-2 py-1 rounded">Premier Partner</span>
+                            </div>
+                            <div className="text-sm text-gray-700 mb-2">
+                              Advanced GCP implementations with Compute Engine, Cloud Functions, BigQuery, Kubernetes Engine, 
+                              and AI/ML services including Vertex AI and TensorFlow integration.
+                            </div>
+                            <div className="grid grid-cols-2 gap-2 text-xs">
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>BigData Analytics</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>ML/AI Platform</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>Kubernetes Native</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3 text-green-600" />
+                                <span>Global CDN</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h4 className="font-semibold mb-3 text-blue-700">DevOps & Infrastructure as Code</h4>
+                        <div className="space-y-2 text-sm">
+                          <div className="flex justify-between items-center bg-gray-50 p-2 rounded">
+                            <span>Docker & Kubernetes</span>
+                            <span className="font-bold text-green-600">Expert</span>
+                          </div>
+                          <div className="flex justify-between items-center bg-gray-50 p-2 rounded">
+                            <span>Terraform & Ansible</span>
+                            <span className="font-bold text-blue-600">Expert</span>
+                          </div>
+                          <div className="flex justify-between items-center bg-gray-50 p-2 rounded">
+                            <span>CI/CD Pipelines</span>
+                            <span className="font-bold text-purple-600">Advanced</span>
+                          </div>
+                          <div className="flex justify-between items-center bg-gray-50 p-2 rounded">
+                            <span>Monitoring & Logging</span>
+                            <span className="font-bold text-orange-600">Advanced</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h4 className="font-semibold mb-3 text-green-700">Reliability & Performance</h4>
+                        <div className="grid grid-cols-2 gap-3 text-sm">
+                          <div className="text-center bg-green-50 p-3 rounded">
+                            <div className="font-bold text-green-600">99.99%</div>
+                            <div className="text-xs">Infrastructure Uptime</div>
+                          </div>
+                          <div className="text-center bg-blue-50 p-3 rounded">
+                            <div className="font-bold text-blue-600">Auto</div>
+                            <div className="text-xs">Scaling</div>
+                          </div>
+                          <div className="text-center bg-purple-50 p-3 rounded">
+                            <div className="font-bold text-purple-600">&lt;30s</div>
+                            <div className="text-xs">Deployment Time</div>
+                          </div>
+                          <div className="text-center bg-orange-50 p-3 rounded">
+                            <div className="font-bold text-orange-600">24/7</div>
+                            <div className="text-xs">Monitoring</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              <div className="bg-gradient-to-r from-gray-50 to-blue-50 p-12 rounded-2xl shadow-xl">
+                <h3 className="text-3xl font-semibold mb-8 text-center">Integration & API Management Excellence</h3>
+                <div className="grid lg:grid-cols-4 gap-8">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-white text-2xl">🔗</span>
+                    </div>
+                    <h4 className="font-semibold mb-3">API Development</h4>
+                    <div className="space-y-2 text-sm">
+                      <div>RESTful API Design</div>
+                      <div>GraphQL Implementation</div>
+                      <div>API Gateway Management</div>
+                      <div>Rate Limiting & Security</div>
+                      <div>Documentation & Testing</div>
+                    </div>
+                  </div>
+
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-white text-2xl">⚡</span>
+                    </div>
+                    <h4 className="font-semibold mb-3">Real-time Integration</h4>
+                    <div className="space-y-2 text-sm">
+                      <div>WebSocket Connections</div>
+                      <div>Server-Sent Events</div>
+                      <div>Message Queues (RabbitMQ)</div>
+                      <div>Event-Driven Architecture</div>
+                      <div>Pub/Sub Patterns</div>
+                    </div>
+                  </div>
+
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-white text-2xl">🔄</span>
+                    </div>
+                    <h4 className="font-semibold mb-3">Data Synchronization</h4>
+                    <div className="space-y-2 text-sm">
+                      <div>ETL/ELT Processes</div>
+                      <div>Data Pipeline Management</div>
+                      <div>Change Data Capture</div>
+                      <div>Batch Processing</div>
+                      <div>Conflict Resolution</div>
+                    </div>
+                  </div>
+
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-white text-2xl">🛡️</span>
+                    </div>
+                    <h4 className="font-semibold mb-3">Security & Compliance</h4>
+                    <div className="space-y-2 text-sm">
+                      <div>OAuth 2.0 / JWT</div>
+                      <div>API Key Management</div>
+                      <div>Encryption Standards</div>
+                      <div>Audit Logging</div>
+                      <div>Compliance Monitoring</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
