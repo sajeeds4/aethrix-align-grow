@@ -1982,11 +1982,11 @@ export default function CaseStudies() {
                             <div className="grid grid-cols-3 gap-2 mt-3">
                               <div className="text-center bg-white p-2 rounded">
                                 <div className="font-bold text-purple-600">2,500+</div>
-                                <div class="text-xs">IoT Sensors</div>
+                                <div className="text-xs">IoT Sensors</div>
                               </div>
                               <div className="text-center bg-white p-2 rounded">
                                 <div className="font-bold text-green-600">75%</div>
-                                <div class="text-xs">Downtime Reduction</div>
+                                <div className="text-xs">Downtime Reduction</div>
                               </div>
                               <div className="text-center bg-white p-2 rounded">
                                 <div className="font-bold text-blue-600">45 days</div>
