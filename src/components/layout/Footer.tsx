@@ -10,6 +10,7 @@ const Footer = () => {
 
   const company = [
     { name: "About Us", href: "/about" },
+    { name: "Careers", href: "/careers" },
     { name: "Case Studies", href: "/case-studies" },
     { name: "Contact", href: "/consultation" },
   ];
@@ -21,10 +22,18 @@ const Footer = () => {
     { name: "Logistics", href: "/industries#logistics" },
   ];
 
+  const legal = [
+    { name: "Privacy Policy", href: "/privacy" },
+    { name: "Terms of Service", href: "/terms" },
+    { name: "Cookie Policy", href: "/privacy/cookies" },
+    { name: "Data Protection", href: "/privacy/data-protection" },
+    { name: "Accessibility", href: "/privacy/accessibility" },
+  ];
+
   return (
     <footer className="bg-gradient-hero text-primary-foreground">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
@@ -73,6 +82,23 @@ const Footer = () => {
             </ul>
           </div>
 
+          {/* Legal */}
+          <div>
+            <h3 className="font-semibold text-lg mb-4">Legal</h3>
+            <ul className="space-y-2">
+              {legal.map((item) => (
+                <li key={item.name}>
+                  <Link
+                    to={item.href}
+                    className="text-primary-foreground/80 hover:text-primary-foreground transition-smooth text-sm"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {/* Contact */}
           <div className="space-y-4">
             <h3 className="font-semibold text-lg mb-4">Contact</h3>
@@ -102,9 +128,25 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-primary-foreground/20 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-primary-foreground/60 text-sm">
-            © 2024 Aethrix Systems. All rights reserved.
-          </p>
+          <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
+            <p className="text-primary-foreground/60 text-sm">
+              © 2024 Aethrix Systems. All rights reserved.
+            </p>
+            <div className="flex items-center space-x-4 text-xs text-primary-foreground/50">
+              <span className="flex items-center gap-1">
+                <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                GDPR Compliant
+              </span>
+              <span className="flex items-center gap-1">
+                <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                CCPA Compliant
+              </span>
+              <span className="flex items-center gap-1">
+                <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
+                WCAG 2.1 AA
+              </span>
+            </div>
+          </div>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a
               href="https://www.linkedin.com/company/aethrix-systems"
@@ -116,16 +158,16 @@ const Footer = () => {
               LinkedIn
             </a>
             <Link
-              to="/privacy"
+              to="/privacy/cookies"
               className="text-primary-foreground/60 hover:text-primary-foreground transition-smooth text-sm"
             >
-              Privacy Policy
+              Cookie Preferences
             </Link>
             <Link
-              to="/terms"
+              to="/privacy/data-protection"
               className="text-primary-foreground/60 hover:text-primary-foreground transition-smooth text-sm"
             >
-              Terms of Service
+              Your Data Rights
             </Link>
           </div>
         </div>

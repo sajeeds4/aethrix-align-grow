@@ -384,96 +384,54 @@ export default function About() {
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-semibold mb-12 text-center">Leadership Team</h2>
             <p className="text-lg text-gray-700 text-center mb-12 max-w-3xl mx-auto">
-              Our leadership team brings together decades of experience from leading technology companies, 
-              combining deep technical expertise with strategic business acumen to guide our clients through 
-              complex digital transformations.
+              Our experienced leadership team combines deep technical expertise with strategic business acumen 
+              to guide our clients through complex digital transformations and deliver exceptional results.
             </p>
             
-            <div className="grid lg:grid-cols-3 gap-8 mb-12">
-              <Card className="shadow-xl hover:shadow-2xl transition-shadow">
-                <CardContent className="p-8 text-center">
-                  <div className="w-24 h-24 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <span className="text-3xl text-white font-bold">JD</span>
+            <div className="bg-gradient-to-r from-gray-50 to-blue-50 p-12 rounded-xl text-center">
+              <div className="max-w-2xl mx-auto">
+                <div className="w-32 h-32 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-8">
+                  <svg className="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                
+                <h3 className="text-2xl font-bold mb-4 text-gray-800">
+                  Building Our Team
+                </h3>
+                
+                <p className="text-gray-600 mb-6 text-lg leading-relaxed">
+                  We're in the process of assembling a world-class leadership team of industry veterans 
+                  and technical experts who share our vision for transformative technology solutions.
+                </p>
+                
+                <div className="grid md:grid-cols-3 gap-6 mt-8">
+                  <div className="p-4 bg-white rounded-lg border border-gray-200">
+                    <div className="text-blue-600 font-semibold mb-2">Technical Leadership</div>
+                    <div className="text-sm text-gray-600">
+                      Seeking experienced CTOs and Principal Engineers from leading tech companies
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold mb-2">John Davidson</h3>
-                  <p className="text-blue-600 font-medium mb-4">Chief Executive Officer</p>
-                  <p className="text-gray-600 text-sm mb-4">
-                    Former VP of Technology at Fortune 500 company with 20+ years leading digital transformations. 
-                    Specializes in enterprise architecture and strategic technology planning.
-                  </p>
-                  <div className="flex flex-wrap gap-2 justify-center">
-                    <Badge variant="outline">Strategy</Badge>
-                    <Badge variant="outline">Leadership</Badge>
-                    <Badge variant="outline">Enterprise Architecture</Badge>
+                  
+                  <div className="p-4 bg-white rounded-lg border border-gray-200">
+                    <div className="text-green-600 font-semibold mb-2">Strategic Vision</div>
+                    <div className="text-sm text-gray-600">
+                      Building partnerships with industry veterans and business strategy experts
+                    </div>
                   </div>
-                </CardContent>
-              </Card>
-
-              <Card className="shadow-xl hover:shadow-2xl transition-shadow">
-                <CardContent className="p-8 text-center">
-                  <div className="w-24 h-24 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <span className="text-3xl text-white font-bold">SP</span>
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">Sarah Peterson</h3>
-                  <p className="text-green-600 font-medium mb-4">Chief Technology Officer</p>
-                  <p className="text-gray-600 text-sm mb-4">
-                    Former Principal Engineer at Microsoft with expertise in cloud platforms, AI/ML, and scalable 
-                    system architectures. Leads our technical innovation initiatives.
-                  </p>
-                  <div className="flex flex-wrap gap-2 justify-center">
-                    <Badge variant="outline">Cloud Architecture</Badge>
-                    <Badge variant="outline">AI/ML</Badge>
-                    <Badge variant="outline">Innovation</Badge>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="shadow-xl hover:shadow-2xl transition-shadow">
-                <CardContent className="p-8 text-center">
-                  <div className="w-24 h-24 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <span className="text-3xl text-white font-bold">MR</span>
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">Michael Rodriguez</h3>
-                  <p className="text-purple-600 font-medium mb-4">VP of Client Success</p>
-                  <p className="text-gray-600 text-sm mb-4">
-                    Former Director of Consulting at Deloitte with 15+ years in client relationship management 
-                    and project delivery. Ensures exceptional client outcomes and satisfaction.
-                  </p>
-                  <div className="flex flex-wrap gap-2 justify-center">
-                    <Badge variant="outline">Client Relations</Badge>
-                    <Badge variant="outline">Project Management</Badge>
-                    <Badge variant="outline">Quality Assurance</Badge>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-
-            <div className="bg-gradient-to-r from-gray-50 to-blue-50 p-8 rounded-xl">
-              <h3 className="text-2xl font-semibold mb-6 text-center">Advisory Board</h3>
-              <div className="grid md:grid-cols-2 gap-8">
-                <div>
-                  <h4 className="font-semibold mb-2">Industry Expertise</h4>
-                  <p className="text-gray-700 text-sm mb-4">
-                    Our advisory board includes former executives from leading technology companies and industry veterans 
-                    who provide strategic guidance and ensure we stay at the forefront of technological innovation.
-                  </p>
-                  <div className="space-y-2 text-sm">
-                    <div>• Former CTO of major ERP vendor (15+ years)</div>
-                    <div>• Ex-AWS Principal Solutions Architect (12+ years)</div>
-                    <div>• Former Healthcare IT Director (20+ years)</div>
+                  
+                  <div className="p-4 bg-white rounded-lg border border-gray-200">
+                    <div className="text-purple-600 font-semibold mb-2">Client Success</div>
+                    <div className="text-sm text-gray-600">
+                      Recruiting top talent in project delivery and client relationship management
+                    </div>
                   </div>
                 </div>
-                <div>
-                  <h4 className="font-semibold mb-2">Strategic Guidance</h4>
-                  <p className="text-gray-700 text-sm mb-4">
-                    Our advisors help shape our strategic direction, ensure our solutions meet evolving market needs, 
-                    and provide insights into emerging technology trends and industry best practices.
-                  </p>
-                  <div className="space-y-2 text-sm">
-                    <div>• Technology trend analysis and forecasting</div>
-                    <div>• Market opportunity identification</div>
-                    <div>• Strategic partnership development</div>
-                  </div>
+
+                <div className="mt-8">
+                  <button className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+                    Join Our Team
+                  </button>
                 </div>
               </div>
             </div>
@@ -993,118 +951,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Join Our Team */}
-      <section className="py-16 bg-gradient-to-br from-blue-50 to-purple-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-semibold mb-12 text-center">Join Our Team</h2>
-            
-            <div className="grid lg:grid-cols-2 gap-12">
-              <div>
-                <h3 className="text-2xl font-semibold mb-6">Career Opportunities</h3>
-                <p className="text-gray-700 mb-6">
-                  We're always looking for talented individuals who share our passion for technology excellence 
-                  and client success. Join our team of innovators and help shape the future of enterprise technology.
-                </p>
 
-                <div className="space-y-4 mb-8">
-                  <Card>
-                    <CardContent className="p-4">
-                      <div className="flex justify-between items-start mb-2">
-                        <h4 className="font-semibold">Senior Cloud Architect</h4>
-                        <Badge variant="outline">Remote</Badge>
-                      </div>
-                      <p className="text-sm text-gray-600 mb-2">Lead cloud transformation initiatives for Fortune 500 clients</p>
-                      <div className="flex flex-wrap gap-1">
-                        <Badge variant="outline" className="text-xs">AWS</Badge>
-                        <Badge variant="outline" className="text-xs">Azure</Badge>
-                        <Badge variant="outline" className="text-xs">Kubernetes</Badge>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card>
-                    <CardContent className="p-4">
-                      <div className="flex justify-between items-start mb-2">
-                        <h4 className="font-semibold">AI/ML Solutions Engineer</h4>
-                        <Badge variant="outline">Hybrid</Badge>
-                      </div>
-                      <p className="text-sm text-gray-600 mb-2">Develop and deploy AI solutions across various industries</p>
-                      <div className="flex flex-wrap gap-1">
-                        <Badge variant="outline" className="text-xs">Python</Badge>
-                        <Badge variant="outline" className="text-xs">TensorFlow</Badge>
-                        <Badge variant="outline" className="text-xs">PyTorch</Badge>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card>
-                    <CardContent className="p-4">
-                      <div className="flex justify-between items-start mb-2">
-                        <h4 className="font-semibold">Enterprise Solutions Consultant</h4>
-                        <Badge variant="outline">Travel Required</Badge>
-                      </div>
-                      <p className="text-sm text-gray-600 mb-2">Drive digital transformation strategies for key accounts</p>
-                      <div className="flex flex-wrap gap-1">
-                        <Badge variant="outline" className="text-xs">SAP</Badge>
-                        <Badge variant="outline" className="text-xs">Salesforce</Badge>
-                        <Badge variant="outline" className="text-xs">Strategy</Badge>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-
-                <Button className="w-full" size="lg">
-                  View All Openings
-                </Button>
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-semibold mb-6">Why Choose Aethrix</h3>
-                
-                <div className="space-y-6">
-                  <div className="bg-white p-6 rounded-xl shadow-md">
-                    <h4 className="font-bold mb-3 text-blue-600">Professional Growth</h4>
-                    <p className="text-sm text-gray-700 mb-3">
-                      Continuous learning opportunities, conference attendance, and certification support
-                    </p>
-                    <div className="grid grid-cols-2 gap-4 text-center text-xs">
-                      <div>
-                        <div className="font-bold text-lg text-blue-600">$5,000</div>
-                        <div>Annual Learning Budget</div>
-                      </div>
-                      <div>
-                        <div className="font-bold text-lg text-blue-600">100%</div>
-                        <div>Certification Coverage</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="bg-white p-6 rounded-xl shadow-md">
-                    <h4 className="font-bold mb-3 text-green-600">Work-Life Balance</h4>
-                    <div className="space-y-2 text-sm text-gray-700">
-                      <div>• Flexible working arrangements</div>
-                      <div>• Unlimited PTO policy</div>
-                      <div>• Mental health support</div>
-                      <div>• Wellness programs</div>
-                    </div>
-                  </div>
-
-                  <div className="bg-white p-6 rounded-xl shadow-md">
-                    <h4 className="font-bold mb-3 text-purple-600">Compensation & Benefits</h4>
-                    <div className="space-y-2 text-sm text-gray-700">
-                      <div>• Competitive salary + equity</div>
-                      <div>• Comprehensive health coverage</div>
-                      <div>• Retirement planning (401k + match)</div>
-                      <div>• Performance bonuses</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Call to Action */}
       <section className="py-16 bg-white">

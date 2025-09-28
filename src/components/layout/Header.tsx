@@ -36,6 +36,10 @@ const Header = () => {
       href: "/case-studies" 
     },
     { 
+      name: "Careers", 
+      href: "/careers" 
+    },
+    { 
       name: "Contact", 
       href: "/contact" 
     }
