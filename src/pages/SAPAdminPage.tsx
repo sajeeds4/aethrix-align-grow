@@ -8,9 +8,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { SAPDataTable } from "@/components/SAPDataTable";
 import { SAPForm } from "@/components/SAPForm";
 import { SAPNotificationSystem, useSAPNotifications } from "@/components/SAPNotificationSystem";
+import { ContactService, ContactSubmission } from "@/integrations/supabase/contact-service";
 import JobManagementDashboard from "@/components/admin/JobManagementDashboard";
 import ApplicationManagementDashboard from "@/components/admin/ApplicationManagementDashboard";
-import { ContactService, ContactSubmission } from "@/integrations/supabase/contact-service";
 import { 
   Menu, 
   Search, 
@@ -248,7 +248,7 @@ const SAPAdminPage = ({ onLogout }: SAPAdminPageProps) => {
     { key: 'actions', label: 'Actions', type: 'action' as const, width: '32' }
   ];
 
-  const handleRowAction = (action: string, row: any) => {
+  const handleRowAction = (action: string, row: ContactSubmission) => {
     switch (action) {
       case 'view':
         addNotification({
@@ -287,7 +287,7 @@ const SAPAdminPage = ({ onLogout }: SAPAdminPageProps) => {
     }
   };
 
-  const handleFormSubmit = (formData: any) => {
+  const handleFormSubmit = (formData: Parameters<React.ComponentProps<typeof SAPForm>['onSubmit']>[0]) => {
     console.log('Form submitted:', formData);
     addNotification({
       type: 'success',

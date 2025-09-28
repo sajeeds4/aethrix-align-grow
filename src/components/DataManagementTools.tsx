@@ -106,7 +106,7 @@ export const DataManagementTools = ({
 
     // Sort
     filtered.sort((a, b) => {
-      let aVal: any, bVal: any;
+      let aVal: string | number | Date, bVal: string | number | Date;
       
       switch (sortField) {
         case 'name':

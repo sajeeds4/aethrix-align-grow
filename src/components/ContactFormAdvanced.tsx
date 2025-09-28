@@ -69,10 +69,22 @@ const ContactFormAdvanced = () => {
       if (dbResult.success) {
         // Send email notifications (optional - comment out if not needed)
         try {
-          await Promise.all([
-            EmailService.sendContactFormNotification(data),
-            EmailService.sendAutoReply(data.email, data.name)
-          ]);
+          if (data.name && data.email) {
+            await Promise.all([
+              EmailService.sendContactFormNotification({
+                name: data.name,
+                email: data.email,
+                company: data.company,
+                phone: data.phone,
+                industry: data.industry,
+                service: data.service,
+                budget: data.budget,
+                timeline: data.timeline,
+                message: data.message
+              }),
+              EmailService.sendAutoReply(data.email, data.name)
+            ]);
+          }
         } catch (emailError) {
           console.warn("Email sending failed:", emailError);
           // Don't fail the entire submission if email fails

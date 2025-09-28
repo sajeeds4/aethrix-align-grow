@@ -153,7 +153,7 @@ export default function JobApplication() {
     }
   };
 
-  const updateApplication = (field: keyof JobApplication, value: any) => {
+  const updateApplication = (field: keyof JobApplication, value: string | string[] | number | boolean | null) => {
     setApplication(prev => ({ ...prev, [field]: value }));
   };
 

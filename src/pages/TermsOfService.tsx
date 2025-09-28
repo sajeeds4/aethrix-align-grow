@@ -456,7 +456,7 @@ export default function TermsOfService() {
                           <ul className="text-yellow-700 text-sm mt-1 space-y-1">
                             <li>• Payments are due within 30 days of invoice date</li>
                             <li>• Late payments may incur interest charges (1.5% per month)</li>
-                            <li>• Services may be suspended for overdue accounts (>60 days)</li>
+                            <li>• Services may be suspended for overdue accounts (&gt;60 days)</li>
                             <li>• All prices exclude applicable taxes unless stated otherwise</li>
                           </ul>
                         </div>

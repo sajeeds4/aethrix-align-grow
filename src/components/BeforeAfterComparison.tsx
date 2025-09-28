@@ -386,7 +386,7 @@ export function BeforeAfterComparison() {
 
       {/* View Controls */}
       <div className="flex justify-between items-center">
-        <Tabs value={activeView} onValueChange={(value) => setActiveView(value as any)}>
+        <Tabs value={activeView} onValueChange={(value) => setActiveView(value as 'split' | 'slider')}>
           <TabsList>
             <TabsTrigger value="split">Split View</TabsTrigger>
             <TabsTrigger value="slider">Progress View</TabsTrigger>

@@ -28,9 +28,13 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+interface DataRow {
+  [key: string]: string | number | Date | boolean | null | undefined;
+}
+
 interface SAPDataTableProps {
   title: string;
-  data: any[];
+  data: DataRow[];
   columns: Array<{
     key: string;
     label: string;
@@ -39,8 +43,8 @@ interface SAPDataTableProps {
     type?: 'text' | 'number' | 'date' | 'status' | 'action';
     width?: string;
   }>;
-  onRowSelect?: (selectedRows: any[]) => void;
-  onRowAction?: (action: string, row: any) => void;
+  onRowSelect?: (selectedRows: DataRow[]) => void;
+  onRowAction?: (action: string, row: DataRow) => void;
   allowBulkActions?: boolean;
   searchPlaceholder?: string;
 }
@@ -173,33 +177,33 @@ export const SAPDataTable = ({
     );
   };
 
-  const renderCellContent = (value: any, column: any) => {
+  const renderCellContent = (value: string | number | Date | boolean | null | undefined, column: SAPDataTableProps['columns'][0], row?: DataRow) => {
     switch (column.type) {
       case 'status':
-        return getStatusBadge(value);
+        return getStatusBadge(String(value || ''));
       case 'date':
-        return new Date(value).toLocaleDateString();
+        return value ? new Date(value as string | number | Date).toLocaleDateString() : '';
       case 'action':
         return (
           <div className="flex items-center gap-1">
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => onRowAction?.('view', value)}
+              onClick={() => onRowAction?.('view', row!)}
             >
               <Eye className="w-4 h-4" />
             </Button>
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => onRowAction?.('edit', value)}
+              onClick={() => onRowAction?.('edit', row!)}
             >
               <Edit className="w-4 h-4" />
             </Button>
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => onRowAction?.('delete', value)}
+              onClick={() => onRowAction?.('delete', row!)}
             >
               <Trash2 className="w-4 h-4" />
             </Button>
@@ -345,7 +349,7 @@ export const SAPDataTable = ({
                     )}
                     {columns.map((column) => (
                       <TableCell key={column.key} className="py-3">
-                        {renderCellContent(row[column.key], column)}
+                        {renderCellContent(row[column.key], column, row)}
                       </TableCell>
                     ))}
                   </TableRow>

@@ -63,17 +63,51 @@ const SAPFormField = ({ label, required, error, info, children, className }: SAP
   </div>
 );
 
+interface PersonalInfo {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  title: string;
+}
+
+interface CompanyInfo {
+  companyName: string;
+  industry: string;
+  size: string;
+  website: string;
+}
+
+interface Preferences {
+  contactMethod: string;
+  newsletter: boolean;
+  notifications: boolean;
+}
+
+interface Additional {
+  priority: string;
+  source: string;
+  notes: string;
+}
+
+interface FormData {
+  personalInfo: PersonalInfo;
+  companyInfo: CompanyInfo;
+  preferences: Preferences;
+  additional: Additional;
+}
+
 interface SAPFormProps {
   title: string;
   description?: string;
-  onSubmit: (data: any) => void;
+  onSubmit: (data: FormData) => void;
   onCancel?: () => void;
   isLoading?: boolean;
-  initialData?: any;
+  initialData?: Partial<FormData>;
 }
 
 export const SAPForm = ({ title, description, onSubmit, onCancel, isLoading, initialData }: SAPFormProps) => {
-  const [formData, setFormData] = useState(initialData || {
+  const [formData, setFormData] = useState<FormData>({
     personalInfo: {
       firstName: '',
       lastName: '',
@@ -93,10 +127,11 @@ export const SAPForm = ({ title, description, onSubmit, onCancel, isLoading, ini
       notifications: true
     },
     additional: {
-      notes: '',
       priority: 'medium',
-      source: ''
-    }
+      source: '',
+      notes: ''
+    },
+    ...initialData
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});

@@ -7,11 +7,16 @@ const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZ
 const supabaseClient = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 export interface ContactSubmission {
+  [key: string]: string | null | undefined;
   id: string;
   name: string;
   email: string;
   company?: string | null;
   phone?: string | null;
+  industry?: string | null;
+  service?: string | null;
+  budget?: string | null;
+  timeline?: string | null;
   message?: string | null;
   status: string;
   created_at: string;
@@ -23,6 +28,10 @@ export interface ContactSubmissionInsert {
   email: string;
   company?: string | null;
   phone?: string | null;
+  industry?: string | null;
+  service?: string | null;
+  budget?: string | null;
+  timeline?: string | null;
   message?: string | null;
 }
 
@@ -67,7 +76,7 @@ export class ContactService {
       }
 
       console.log('Supabase submission successful:', result);
-      return { success: true, id: (result as any).id };
+      return { success: true, id: result?.id };
     } catch (error) {
       console.error('Supabase connection error:', error);
       const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
