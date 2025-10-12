@@ -77,9 +77,6 @@ const Header = () => {
               <a href="mailto:info@aethrixsystems.com" className="text-muted-foreground hover:text-accent transition-smooth">
                 info@aethrixsystems.com
               </a>
-              <a href="tel:+19175649475" className="text-muted-foreground hover:text-accent transition-smooth">
-                +1 917 564 9475
-              </a>
             </div>
             <Button variant="cta" asChild>
               <Link to="/consultation">Free Consultation</Link>

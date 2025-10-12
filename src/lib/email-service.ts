@@ -119,8 +119,7 @@ export class EmailService {
           <div style="border-top: 1px solid #eee; padding-top: 20px; margin-top: 30px;">
             <p style="color: #777; font-size: 14px; margin-bottom: 10px;">
               <strong>Aethrix Systems</strong><br>
-              Email: info@aethrixsystems.com<br>
-              Phone: +1 917 564 9475
+              Email: info@aethrixsystems.com
             </p>
             <p style="color: #999; font-size: 12px;">
               This is an automated response. Please do not reply to this email.

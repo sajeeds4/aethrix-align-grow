@@ -109,11 +109,6 @@ const Footer = () => {
                     info@aethrixsystems.com
                   </a>
                 </p>
-                <p>
-                  <a href="tel:+19175649475" className="text-accent hover:text-accent/80 transition-smooth">
-                    +1 917 564 9475
-                  </a>
-                </p>
               </div>
               <div className="pt-2">
                 <Link
