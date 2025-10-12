@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { supabase } from '@/integrations/supabase/client';
+import SEO from '@/components/SEO';
 import { 
   MapPin, 
   Clock, 
@@ -50,6 +51,29 @@ export default function Careers() {
 
   useEffect(() => {
     fetchJobs();
+
+    // Set up real-time subscription for job_listings changes
+    const channel = supabase
+      .channel('job_listings_changes')
+      .on(
+        'postgres_changes',
+        {
+          event: '*', // Listen to all events: INSERT, UPDATE, DELETE
+          schema: 'public',
+          table: 'job_listings'
+        },
+        (payload) => {
+          console.log('Job listing changed:', payload);
+          // Re-fetch jobs when any change occurs
+          fetchJobs();
+        }
+      )
+      .subscribe();
+
+    // Cleanup subscription on unmount
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, []);
 
   useEffect(() => {
@@ -140,6 +164,27 @@ export default function Careers() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+      <SEO 
+        title="Careers - Join Our Team | Aethrix Systems"
+        description="Explore exciting career opportunities at Aethrix Systems. We're hiring talented professionals for ERP, software development, cloud computing, and AI/ML positions across India and Asia."
+        keywords="careers, jobs, ERP jobs, software developer jobs, cloud engineer, AI ML jobs, tech careers India, Odoo developer, Python developer"
+        ogType="website"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "JobPosting",
+          "hiringOrganization": {
+            "@type": "Organization",
+            "name": "Aethrix Systems"
+          },
+          "jobLocation": {
+            "@type": "Place",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "IN"
+            }
+          }
+        }}
+      />
       {/* Breadcrumb */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-8">
         <Breadcrumb>

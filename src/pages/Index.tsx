@@ -6,10 +6,36 @@ import WhoWeHelp from "@/components/sections/WhoWeHelp";
 import WhyAethrix from "@/components/sections/WhyAethrix";
 import TrustedBy from "@/components/sections/TrustedBy";
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import SEO from "@/components/SEO";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO 
+        title="Professional ERP & Software Solutions | Aethrix Systems"
+        description="Aethrix Systems provides expert ERP implementation, custom software development, cloud solutions, and AI/ML services. 15+ years experience in India & Asia. Free consultation available."
+        keywords="ERP implementation, Odoo ERP, software development, cloud solutions, AI ML services, enterprise software, business automation, digital transformation"
+        ogType="website"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "Aethrix Systems",
+          "description": "Professional ERP implementation and software development company",
+          "url": "https://aethrixsystems.com",
+          "logo": "https://aethrixsystems.com/logo.png",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+91-XXXXXXXXXX",
+            "contactType": "Sales",
+            "areaServed": ["IN", "ASIA"],
+            "availableLanguage": ["English", "Hindi"]
+          },
+          "sameAs": [
+            "https://linkedin.com/company/aethrixsystems",
+            "https://twitter.com/aethrixsystems"
+          ]
+        }}
+      />
       <Header />
       <main>
         <HeroSection />

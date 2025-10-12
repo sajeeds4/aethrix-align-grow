@@ -39,66 +39,22 @@ interface JobListing {
 
 interface JobApplication {
   job_listing_id: string;
-  first_name: string;
-  last_name: string;
+  full_name: string;
   email: string;
   phone: string;
-  location: string;
-  linkedin_url: string;
-  portfolio_url: string;
-  github_url: string;
   current_position: string;
-  current_company: string;
   years_of_experience: number | null;
-  expected_salary: string;
-  availability: string;
-  willing_to_relocate: boolean;
-  work_authorization: string;
-  technical_skills: string[];
-  soft_skills: string[];
-  programming_languages: string[];
-  frameworks_tools: string[];
-  certifications: string[];
-  languages_spoken: string[];
-  work_experience: string;
-  education_background: string;
-  projects: string;
-  achievements: string;
   cover_letter: string;
-  why_interested: string;
-  additional_info: string;
 }
 
 const emptyApplication: JobApplication = {
   job_listing_id: '',
-  first_name: '',
-  last_name: '',
+  full_name: '',
   email: '',
   phone: '',
-  location: '',
-  linkedin_url: '',
-  portfolio_url: '',
-  github_url: '',
   current_position: '',
-  current_company: '',
   years_of_experience: null,
-  expected_salary: '',
-  availability: '',
-  willing_to_relocate: false,
-  work_authorization: '',
-  technical_skills: [],
-  soft_skills: [],
-  programming_languages: [],
-  frameworks_tools: [],
-  certifications: [],
-  languages_spoken: [],
-  work_experience: '',
-  education_background: '',
-  projects: '',
-  achievements: '',
-  cover_letter: '',
-  why_interested: '',
-  additional_info: ''
+  cover_letter: ''
 };
 
 export default function JobApplication() {
@@ -109,6 +65,7 @@ export default function JobApplication() {
   const [application, setApplication] = useState<JobApplication>(emptyApplication);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
   const [skillsInput, setSkillsInput] = useState({
     technical: '',
@@ -205,6 +162,70 @@ export default function JobApplication() {
 
   const prevStep = () => {
     setCurrentStep(prev => Math.max(prev - 1, 1));
+  };
+
+  const handleResumeUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    // Validate file type
+    const validTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+    if (!validTypes.includes(file.type)) {
+      toast({
+        title: "Invalid File Type",
+        description: "Please upload a PDF or Word document",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Validate file size (5MB max)
+    if (file.size > 5 * 1024 * 1024) {
+      toast({
+        title: "File Too Large",
+        description: "Resume must be less than 5MB",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    try {
+      setUploading(true);
+
+      // Create unique filename
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${jobId}_${Date.now()}.${fileExt}`;
+      const filePath = `resumes/${fileName}`;
+
+      // Upload to Supabase Storage
+      const { error: uploadError } = await supabase.storage
+        .from('job-applications')
+        .upload(filePath, file);
+
+      if (uploadError) throw uploadError;
+
+      // Get public URL
+      const { data: { publicUrl } } = supabase.storage
+        .from('job-applications')
+        .getPublicUrl(filePath);
+
+      // Update application state
+      setApplication(prev => ({ ...prev, resume_url: publicUrl }));
+
+      toast({
+        title: "Resume Uploaded",
+        description: "Your resume has been uploaded successfully",
+      });
+    } catch (error) {
+      console.error('Error uploading resume:', error);
+      toast({
+        title: "Upload Failed",
+        description: "Failed to upload resume. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setUploading(false);
+    }
   };
 
   const handleSubmit = async () => {
@@ -443,27 +464,35 @@ export default function JobApplication() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-4">
                     <div>
-                      <Label htmlFor="work_authorization">Work Authorization</Label>
-                      <Select
-                        value={application.work_authorization}
-                        onValueChange={(value) => updateApplication('work_authorization', value)}
-                      >
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select authorization status" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="us_citizen">US Citizen</SelectItem>
-                          <SelectItem value="green_card">Green Card Holder</SelectItem>
-                          <SelectItem value="h1b">H1B Visa</SelectItem>
-                          <SelectItem value="opt">F1 OPT</SelectItem>
-                          <SelectItem value="other_visa">Other Visa</SelectItem>
-                          <SelectItem value="requires_sponsorship">Requires Sponsorship</SelectItem>
-                        </SelectContent>
-                      </Select>
+                      <Label htmlFor="resume">Upload Resume *</Label>
+                      <Input
+                        id="resume"
+                        type="file"
+                        accept=".pdf,.doc,.docx"
+                        onChange={handleResumeUpload}
+                        disabled={uploading}
+                        className="cursor-pointer"
+                      />
+                      {uploading && (
+                        <p className="text-sm text-blue-600 mt-2 flex items-center gap-2">
+                          <Loader2 className="h-4 w-4 animate-spin" />
+                          Uploading resume...
+                        </p>
+                      )}
+                      {application.resume_url && (
+                        <p className="text-sm text-green-600 mt-2 flex items-center gap-2">
+                          <CheckCircle className="h-4 w-4" />
+                          Resume uploaded successfully
+                        </p>
+                      )}
+                      <p className="text-sm text-gray-500 mt-1">
+                        PDF or Word document, max 5MB
+                      </p>
                     </div>
-                    <div className="flex items-center space-x-2 pt-6">
+
+                    <div className="flex items-center space-x-2">
                       <Checkbox
                         id="willing_to_relocate"
                         checked={application.willing_to_relocate}

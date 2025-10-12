@@ -19,36 +19,111 @@ export function NavigationMenuDemo() {
 
   const servicesPaths = ["/erp", "/development", "/cloud", "/ai", "/services"]
   const servicesActive = servicesPaths.some((p) => isPathActive(p, pathname))
-  const services = [
+  
+  const erpSubpages = [
     {
-      title: "ERP Solutions",
+      title: "ERP Overview",
       to: "/erp",
-      description: "Enterprise Resource Planning solutions to streamline your business operations.",
+      description: "Complete ERP solutions and implementation services.",
     },
     {
-      title: "Web & App Development",
+      title: "Odoo Implementation",
+      to: "/erp/odoo",
+      description: "Professional Odoo ERP setup and customization.",
+    },
+    {
+      title: "Data Migration",
+      to: "/erp/migration",
+      description: "Seamless migration from legacy systems.",
+    },
+    {
+      title: "Custom Development",
+      to: "/erp/customization",
+      description: "Bespoke ERP solutions for unique requirements.",
+    },
+  ]
+
+  const developmentSubpages = [
+    {
+      title: "Development Overview",
       to: "/development",
-      description: "Custom web and mobile applications built with modern technologies.",
+      description: "Custom software development services.",
     },
     {
-      title: "Cloud & Infrastructure",
+      title: "Web Development",
+      to: "/development/web",
+      description: "Modern, responsive web applications.",
+    },
+    {
+      title: "Mobile Development",
+      to: "/development/mobile",
+      description: "Native and cross-platform mobile apps.",
+    },
+    {
+      title: "Enterprise Applications",
+      to: "/development/enterprise",
+      description: "Scalable enterprise software solutions.",
+    },
+    {
+      title: "E-commerce Solutions",
+      to: "/development/ecommerce",
+      description: "Complete e-commerce platforms and integrations.",
+    },
+  ]
+
+  const cloudSubpages = [
+    {
+      title: "Cloud Overview",
       to: "/cloud",
-      description: "Scalable cloud solutions and infrastructure management services.",
+      description: "Cloud infrastructure and migration services.",
     },
     {
-      title: "AI & Automation",
+      title: "Infrastructure Services",
+      to: "/cloud/infrastructure",
+      description: "Infrastructure as a Service and management.",
+    },
+    {
+      title: "Cloud Migration",
+      to: "/cloud/migration",
+      description: "Seamless cloud migration strategies.",
+    },
+    {
+      title: "DevOps & CI/CD",
+      to: "/cloud/devops",
+      description: "DevOps implementation and automation.",
+    },
+    {
+      title: "Cloud Security",
+      to: "/cloud/security",
+      description: "Comprehensive cloud security solutions.",
+    },
+  ]
+
+  const aiSubpages = [
+    {
+      title: "AI Overview",
       to: "/ai",
-      description: "Advanced AI solutions and automation services for business growth.",
+      description: "Artificial intelligence and automation solutions.",
     },
     {
-      title: "Service Configurator",
-      to: "/service-configurator",
-      description: "Interactive tool to configure and price your custom solution.",
+      title: "Machine Learning",
+      to: "/ai/machine-learning",
+      description: "Custom ML models and implementations.",
     },
     {
-      title: "Implementation Process",
-      to: "/implementation-methodology",
-      description: "Detailed methodology and proven approach for successful delivery.",
+      title: "Business Automation",
+      to: "/ai/automation",
+      description: "Intelligent process automation solutions.",
+    },
+    {
+      title: "Chatbot Development",
+      to: "/ai/chatbots",
+      description: "AI-powered chatbots and virtual assistants.",
+    },
+    {
+      title: "AI Analytics",
+      to: "/ai/analytics",
+      description: "Advanced analytics and insights platforms.",
     },
   ]
 
@@ -65,17 +140,48 @@ export function NavigationMenuDemo() {
         <NavigationMenuItem>
           <NavigationMenuTrigger className={cn(servicesActive && "bg-accent text-accent-foreground")}>Services</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[700px] lg:grid-cols-3">
-              {services.map((service) => (
-                <ListItem
-                  key={service.title}
-                  title={service.title}
-                  to={service.to}
-                >
-                  {service.description}
-                </ListItem>
-              ))}
-            </ul>
+            <div className="grid w-[600px] gap-4 p-4 lg:w-[800px] lg:grid-cols-4">
+              <div>
+                <h4 className="mb-3 text-sm font-medium leading-none text-accent">ERP Solutions</h4>
+                <ul className="space-y-3">
+                  {erpSubpages.map((item) => (
+                    <ListItem key={item.title} title={item.title} to={item.to}>
+                      {item.description}
+                    </ListItem>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h4 className="mb-3 text-sm font-medium leading-none text-accent">Development</h4>
+                <ul className="space-y-3">
+                  {developmentSubpages.slice(0, 4).map((item) => (
+                    <ListItem key={item.title} title={item.title} to={item.to}>
+                      {item.description}
+                    </ListItem>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h4 className="mb-3 text-sm font-medium leading-none text-accent">Cloud Solutions</h4>
+                <ul className="space-y-3">
+                  {cloudSubpages.slice(0, 4).map((item) => (
+                    <ListItem key={item.title} title={item.title} to={item.to}>
+                      {item.description}
+                    </ListItem>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h4 className="mb-3 text-sm font-medium leading-none text-accent">AI & Automation</h4>
+                <ul className="space-y-3">
+                  {aiSubpages.slice(0, 4).map((item) => (
+                    <ListItem key={item.title} title={item.title} to={item.to}>
+                      {item.description}
+                    </ListItem>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>

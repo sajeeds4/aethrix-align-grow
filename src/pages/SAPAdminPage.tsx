@@ -9,8 +9,11 @@ import { SAPDataTable } from "@/components/SAPDataTable";
 import { SAPForm } from "@/components/SAPForm";
 import { SAPNotificationSystem, useSAPNotifications } from "@/components/SAPNotificationSystem";
 import { ContactService, ContactSubmission } from "@/integrations/supabase/contact-service";
-import JobManagementDashboard from "@/components/admin/JobManagementDashboard";
+import { JobListingManagement } from "@/components/admin/JobListingManagement";
 import ApplicationManagementDashboard from "@/components/admin/ApplicationManagementDashboard";
+import AnalyticsDashboard from "@/components/admin/AnalyticsDashboard";
+import BulkActions from "@/components/admin/BulkActions";
+import DatabaseManagement from "@/components/admin/DatabaseManagement";
 import { 
   Menu, 
   Search, 
@@ -659,7 +662,7 @@ const SAPAdminPage = ({ onLogout }: SAPAdminPageProps) => {
 
           {/* Job Management Section */}
           {activeSection === 'jobs' && (
-            <JobManagementDashboard />
+            <JobListingManagement />
           )}
 
           {/* Job Applications Section */}
@@ -667,8 +670,13 @@ const SAPAdminPage = ({ onLogout }: SAPAdminPageProps) => {
             <ApplicationManagementDashboard />
           )}
 
+          {/* Analytics Section */}
+          {activeSection === 'analytics' && (
+            <AnalyticsDashboard submissions={submissions} />
+          )}
+
           {/* Other sections */}
-          {!['dashboard', 'contacts', 'forms', 'jobs', 'applications'].includes(activeSection) && (
+          {!['dashboard', 'contacts', 'forms', 'jobs', 'applications', 'analytics'].includes(activeSection) && (
             <div className="text-center py-12">
               <div className="w-16 h-16 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-4">
                 <Settings className="w-8 h-8 text-gray-400" />

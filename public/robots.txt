@@ -12,3 +12,10 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+# Sitemap
+Sitemap: https://aethrixsystems.com/sitemap.xml
+
+# Disallow admin pages
+Disallow: /admin
+Disallow: /sap-admin

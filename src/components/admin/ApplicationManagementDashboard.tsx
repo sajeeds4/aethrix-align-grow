@@ -24,45 +24,113 @@ import {
   CheckCircle,
   XCircle,
   AlertCircle,
-  User
+  User,
+  Download,
+  FileText
 } from 'lucide-react';
 
 interface JobApplication {
   id: string;
   job_listing_id: string;
-  first_name: string;
-  last_name: string;
+  // Basic Information
+  full_name: string;
   email: string;
   phone: string;
-  location: string;
-  linkedin_url: string;
-  portfolio_url: string;
-  github_url: string;
-  current_position: string;
-  current_company: string;
-  years_of_experience: number;
-  expected_salary: string;
-  availability: string;
+  whatsapp_number?: string;
+  date_of_birth?: string;
+  gender?: string;
+  
+  // Location Details
+  current_address: string;
+  city: string;
+  state: string;
+  country: string;
+  postal_code?: string;
   willing_to_relocate: boolean;
-  work_authorization: string;
-  technical_skills: string[];
-  soft_skills: string[];
-  programming_languages: string[];
-  frameworks_tools: string[];
-  certifications: string[];
-  languages_spoken: string[];
-  work_experience: string;
-  education_background: string;
-  projects: string;
-  achievements: string;
-  cover_letter: string;
+  preferred_work_location?: string;
+  
+  // Professional Information
+  current_position: string;
+  current_company?: string;
+  current_company_industry?: string;
+  years_of_experience: number;
+  months_of_experience?: number;
+  highest_education: string;
+  university_name?: string;
+  graduation_year?: number;
+  major_field?: string;
+  
+  // Sales-Specific Experience
+  sales_experience_years?: number;
+  previous_sales_roles?: string;
+  sales_tools_used?: string[];
+  crm_experience?: string;
+  monthly_sales_achieved?: string;
+  key_achievements?: string;
+  
+  // Skills & Certifications
+  technical_skills?: string[];
+  soft_skills?: string[];
+  certifications?: string[];
+  sales_certifications?: string;
+  
+  // Availability & Compensation
+  notice_period: string;
+  earliest_join_date?: string;
+  current_salary?: string;
+  expected_salary: string;
+  salary_negotiable?: boolean;
+  
+  // Language Skills
+  english_proficiency: string;
+  hindi_proficiency?: string;
+  other_languages?: string;
+  comfortable_with_cold_calling?: boolean;
+  
+  // Work Preferences
+  preferred_shift?: string;
+  work_from_home_preference?: string;
+  comfortable_with_targets?: boolean;
+  travel_willingness?: string;
+  
+  // Social & Professional Links
+  linkedin_url?: string;
+  portfolio_url?: string;
+  github_url?: string;
+  other_profile_url?: string;
+  
+  // References
+  reference_name?: string;
+  reference_company?: string;
+  reference_phone?: string;
+  reference_email?: string;
+  
+  // Motivation & Fit
   why_interested: string;
-  additional_info: string;
+  why_sales?: string;
+  career_goals: string;
+  strengths: string;
+  weaknesses?: string;
+  cover_letter: string;
+  additional_info?: string;
+  
+  // Resume
+  resume_filename?: string;
+  resume_data?: string;
+  
+  // Consent & Legal
+  data_consent?: boolean;
+  background_check_consent?: boolean;
+  
+  // Admin fields
   status: string;
-  application_date: string;
-  last_updated: string;
-  admin_notes: string;
-  interview_scheduled: string;
+  admin_notes?: string;
+  rating?: number;
+  interview_date?: string;
+  created_at: string;
+  updated_at: string;
+  
+  // Relations
   job_listings?: {
     title: string;
     department: string;
@@ -102,7 +170,7 @@ export default function ApplicationManagementDashboard() {
             location
           )
         `)
-        .order('application_date', { ascending: false });
+        .order('created_at', { ascending: false });
 
       if (error) throw error;
       setApplications(data || []);
@@ -118,13 +186,46 @@ export default function ApplicationManagementDashboard() {
     }
   };
 
+  const downloadResume = (application: JobApplication) => {
+    if (!application.resume_data || !application.resume_filename) {
+      toast({
+        title: "No Resume",
+        description: "This application doesn't have an attached resume",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    try {
+      // Create a link and trigger download
+      const link = document.createElement('a');
+      link.href = application.resume_data;
+      link.download = application.resume_filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      toast({
+        title: "Download Started",
+        description: `Downloading ${application.resume_filename}`,
+      });
+    } catch (error) {
+      console.error('Error downloading resume:', error);
+      toast({
+        title: "Download Failed",
+        description: "Failed to download resume",
+        variant: "destructive",
+      });
+    }
+  };
+
   const filterApplications = () => {
     let filtered = applications;
 
     // Search filter
     if (searchTerm) {
       filtered = filtered.filter(app =>
-        `${app.first_name} ${app.last_name}`.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        app.full_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         app.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
         app.current_position.toLowerCase().includes(searchTerm.toLowerCase()) ||
         app.job_listings?.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -337,7 +438,7 @@ export default function ApplicationManagementDashboard() {
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-2">
                           <h3 className="font-semibold text-lg">
-                            {application.first_name} {application.last_name}
+                            {application.full_name}
                           </h3>
                           <Badge className={getStatusColor(application.status)}>
                             <span className="flex items-center gap-1">
@@ -354,7 +455,7 @@ export default function ApplicationManagementDashboard() {
                           </div>
                           <div className="flex items-center gap-1">
                             <User className="w-4 h-4" />
-                            {application.current_position} at {application.current_company}
+                            {application.current_position}
                           </div>
                           <div className="flex items-center gap-1">
                             <Mail className="w-4 h-4" />
@@ -365,30 +466,19 @@ export default function ApplicationManagementDashboard() {
                             {application.phone}
                           </div>
                           <div className="flex items-center gap-1">
-                            <MapPin className="w-4 h-4" />
-                            {application.location}
-                          </div>
-                          <div className="flex items-center gap-1">
                             <Clock className="w-4 h-4" />
                             {application.years_of_experience} years experience
                           </div>
-                        </div>
-                        
-                        <div className="flex flex-wrap gap-1 mb-2">
-                          {application.technical_skills?.slice(0, 5).map((skill, index) => (
-                            <Badge key={index} variant="outline" className="text-xs">
-                              {skill}
-                            </Badge>
-                          ))}
-                          {application.technical_skills?.length > 5 && (
-                            <Badge variant="outline" className="text-xs">
-                              +{application.technical_skills.length - 5} more
-                            </Badge>
+                          {application.resume_filename && (
+                            <div className="flex items-center gap-1">
+                              <FileText className="w-4 h-4" />
+                              Resume attached
+                            </div>
                           )}
                         </div>
                         
                         <p className="text-xs text-gray-500">
-                          Applied: {formatDate(application.application_date)}
+                          Applied: {formatDate(application.created_at)}
                         </p>
                       </div>
                       
@@ -407,7 +497,7 @@ export default function ApplicationManagementDashboard() {
                           <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
                             <DialogHeader>
                               <DialogTitle>
-                                Application Details - {selectedApplication?.first_name} {selectedApplication?.last_name}
+                                Application Details - {selectedApplication?.full_name}
                               </DialogTitle>
                               <DialogDescription>
                                 Applied for: {selectedApplication?.job_listings?.title}
@@ -420,16 +510,29 @@ export default function ApplicationManagementDashboard() {
                                 <div>
                                   <h4 className="font-semibold mb-2">Personal Information</h4>
                                   <div className="grid grid-cols-2 gap-4 text-sm">
-                                    <div><strong>Name:</strong> {selectedApplication.first_name} {selectedApplication.last_name}</div>
+                                    <div><strong>Name:</strong> {selectedApplication.full_name}</div>
                                     <div><strong>Email:</strong> {selectedApplication.email}</div>
                                     <div><strong>Phone:</strong> {selectedApplication.phone}</div>
-                                    <div><strong>Location:</strong> {selectedApplication.location}</div>
+                                    {selectedApplication.whatsapp_number && (
+                                      <div><strong>WhatsApp:</strong> {selectedApplication.whatsapp_number}</div>
+                                    )}
                                     {selectedApplication.linkedin_url && (
-                                      <div><strong>LinkedIn:</strong> <a href={selectedApplication.linkedin_url} target="_blank" rel="noopener noreferrer" className="text-blue-600">View Profile</a></div>
+                                      <div><strong>LinkedIn:</strong> <a href={selectedApplication.linkedin_url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">View Profile</a></div>
                                     )}
-                                    {selectedApplication.portfolio_url && (
-                                      <div><strong>Portfolio:</strong> <a href={selectedApplication.portfolio_url} target="_blank" rel="noopener noreferrer" className="text-blue-600">View Portfolio</a></div>
+                                  </div>
+                                </div>
+
+                                {/* Location Details */}
+                                <div>
+                                  <h4 className="font-semibold mb-2">Location</h4>
+                                  <div className="grid grid-cols-2 gap-4 text-sm">
+                                    <div><strong>City:</strong> {selectedApplication.city}</div>
+                                    <div><strong>State:</strong> {selectedApplication.state}</div>
+                                    <div><strong>Country:</strong> {selectedApplication.country}</div>
+                                    {selectedApplication.postal_code && (
+                                      <div><strong>Postal Code:</strong> {selectedApplication.postal_code}</div>
                                     )}
+                                    <div><strong>Willing to Relocate:</strong> {selectedApplication.willing_to_relocate ? 'Yes' : 'No'}</div>
                                   </div>
                                 </div>
 
@@ -438,52 +541,46 @@ export default function ApplicationManagementDashboard() {
                                   <h4 className="font-semibold mb-2">Professional Information</h4>
                                   <div className="grid grid-cols-2 gap-4 text-sm">
                                     <div><strong>Current Position:</strong> {selectedApplication.current_position}</div>
-                                    <div><strong>Current Company:</strong> {selectedApplication.current_company}</div>
+                                    {selectedApplication.current_company && (
+                                      <div><strong>Current Company:</strong> {selectedApplication.current_company}</div>
+                                    )}
                                     <div><strong>Years of Experience:</strong> {selectedApplication.years_of_experience}</div>
+                                    <div><strong>Highest Education:</strong> {selectedApplication.highest_education}</div>
+                                    <div><strong>Notice Period:</strong> {selectedApplication.notice_period}</div>
+                                  </div>
+                                </div>
+
+                                {/* Compensation */}
+                                <div>
+                                  <h4 className="font-semibold mb-2">Compensation</h4>
+                                  <div className="grid grid-cols-2 gap-4 text-sm">
                                     <div><strong>Expected Salary:</strong> {selectedApplication.expected_salary}</div>
-                                    <div><strong>Availability:</strong> {selectedApplication.availability}</div>
-                                    <div><strong>Work Authorization:</strong> {selectedApplication.work_authorization}</div>
+                                    {selectedApplication.current_salary && (
+                                      <div><strong>Current Salary:</strong> {selectedApplication.current_salary}</div>
+                                    )}
                                   </div>
                                 </div>
 
-                                {/* Skills */}
+                                {/* Language Skills */}
                                 <div>
-                                  <h4 className="font-semibold mb-2">Skills</h4>
-                                  <div className="space-y-2">
-                                    <div>
-                                      <strong>Technical Skills:</strong>
-                                      <div className="flex flex-wrap gap-1 mt-1">
-                                        {selectedApplication.technical_skills?.map((skill, index) => (
-                                          <Badge key={index} variant="secondary" className="text-xs">{skill}</Badge>
-                                        ))}
-                                      </div>
-                                    </div>
-                                    <div>
-                                      <strong>Programming Languages:</strong>
-                                      <div className="flex flex-wrap gap-1 mt-1">
-                                        {selectedApplication.programming_languages?.map((lang, index) => (
-                                          <Badge key={index} variant="outline" className="text-xs">{lang}</Badge>
-                                        ))}
-                                      </div>
-                                    </div>
+                                  <h4 className="font-semibold mb-2">Language Skills</h4>
+                                  <div className="grid grid-cols-2 gap-4 text-sm">
+                                    <div><strong>English Proficiency:</strong> {selectedApplication.english_proficiency}</div>
+                                    {selectedApplication.other_languages && (
+                                      <div><strong>Other Languages:</strong> {selectedApplication.other_languages}</div>
+                                    )}
                                   </div>
                                 </div>
 
-                                {/* Experience & Education */}
+                                {/* Why Interested */}
                                 <div>
-                                  <h4 className="font-semibold mb-2">Work Experience</h4>
+                                  <h4 className="font-semibold mb-2">Why Interested in This Position</h4>
                                   <p className="text-sm whitespace-pre-line bg-gray-50 p-3 rounded">
-                                    {selectedApplication.work_experience}
+                                    {selectedApplication.why_interested}
                                   </p>
                                 </div>
 
-                                <div>
-                                  <h4 className="font-semibold mb-2">Projects</h4>
-                                  <p className="text-sm whitespace-pre-line bg-gray-50 p-3 rounded">
-                                    {selectedApplication.projects}
-                                  </p>
-                                </div>
-
+                                {/* Cover Letter */}
                                 <div>
                                   <h4 className="font-semibold mb-2">Cover Letter</h4>
                                   <p className="text-sm whitespace-pre-line bg-gray-50 p-3 rounded">
@@ -491,12 +588,20 @@ export default function ApplicationManagementDashboard() {
                                   </p>
                                 </div>
 
-                                <div>
-                                  <h4 className="font-semibold mb-2">Why Interested</h4>
-                                  <p className="text-sm whitespace-pre-line bg-gray-50 p-3 rounded">
-                                    {selectedApplication.why_interested}
-                                  </p>
-                                </div>
+                                {/* Resume */}
+                                {selectedApplication.resume_filename && (
+                                  <div>
+                                    <h4 className="font-semibold mb-2">Resume</h4>
+                                    <Button
+                                      onClick={() => downloadResume(selectedApplication)}
+                                      variant="outline"
+                                      size="sm"
+                                    >
+                                      <Download className="w-4 h-4 mr-2" />
+                                      Download {selectedApplication.resume_filename}
+                                    </Button>
+                                  </div>
+                                )}
 
                                 {/* Status Management */}
                                 <div className="border-t pt-4">

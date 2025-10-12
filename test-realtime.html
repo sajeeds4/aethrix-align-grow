@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supabase Realtime Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .status {
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .status.pending {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+        }
+        .status.connected {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .events {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .event {
+            padding: 10px;
+            margin: 5px 0;
+            background: white;
+            border-left: 4px solid #007bff;
+            border-radius: 3px;
+        }
+        .event.insert {
+            border-left-color: #28a745;
+        }
+        .event.update {
+            border-left-color: #ffc107;
+        }
+        .event.delete {
+            border-left-color: #dc3545;
+        }
+        .timestamp {
+            color: #666;
+            font-size: 12px;
+        }
+        .instructions {
+            background: #e7f3ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid #007bff;
+        }
+        .instructions h3 {
+            margin-top: 0;
+            color: #004085;
+        }
+        .instructions ol {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .instructions li {
+            margin: 5px 0;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔴 Supabase Realtime Test</h1>
+        <p>Testing realtime connection to your Supabase database</p>
+
+        <div id="status" class="status pending">
+            ⏳ Connecting to Supabase...
+        </div>
+
+        <div class="instructions">
+            <h3>📋 How to Test:</h3>
+            <ol>
+                <li>Open your <strong>Supabase Dashboard</strong> in another tab</li>
+                <li>Go to <code>Table Editor</code> → <code>job_listings</code></li>
+                <li>Try these actions and watch for events below:
+                    <ul>
+                        <li><strong>INSERT:</strong> Create a new job</li>
+                        <li><strong>UPDATE:</strong> Edit an existing job (change title/salary)</li>
+                        <li><strong>DELETE:</strong> Delete a job</li>
+                    </ul>
+                </li>
+                <li>Events should appear instantly below! ⚡</li>
+            </ol>
+        </div>
+
+        <div class="events">
+            <h3>📡 Realtime Events:</h3>
+            <div id="events-list">
+                <p style="color: #666;">Waiting for database changes...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Your Supabase credentials from the previous setup
+        const SUPABASE_URL = 'https://faoiscbbfjtvpywmddpn.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZhb2lzY2JiZmp0dnB5d21kZHBuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg5NDgyNzUsImV4cCI6MjA3NDUyNDI3NX0.crp_UbafreGGA_9H9berxsNYzUSijPzOuAQtC6jT044';
+
+        const { createClient } = supabase;
+        const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        const statusDiv = document.getElementById('status');
+        const eventsList = document.getElementById('events-list');
+
+        let eventCount = 0;
+
+        function updateStatus(message, type) {
+            statusDiv.className = `status ${type}`;
+            statusDiv.innerHTML = message;
+        }
+
+        function addEvent(eventType, payload) {
+            eventCount++;
+            const timestamp = new Date().toLocaleTimeString();
+            
+            const eventDiv = document.createElement('div');
+            eventDiv.className = `event ${eventType}`;
+            
+            let emoji = '🔵';
+            if (eventType === 'INSERT') emoji = '✅';
+            if (eventType === 'UPDATE') emoji = '✏️';
+            if (eventType === 'DELETE') emoji = '🗑️';
+            
+            eventDiv.innerHTML = `
+                <div><strong>${emoji} ${eventType}</strong> <span class="timestamp">${timestamp}</span></div>
+                <div style="margin-top: 5px; font-size: 14px;">
+                    ${eventType === 'DELETE' ? 
+                        `Deleted record ID: ${payload.old.id}` : 
+                        `Job: ${payload.new?.title || payload.old?.title || 'Unknown'} (ID: ${payload.new?.id || payload.old?.id})`
+                    }
+                </div>
+                <details style="margin-top: 5px;">
+                    <summary style="cursor: pointer; color: #007bff;">View payload</summary>
+                    <pre style="margin-top: 5px; font-size: 12px; background: #f8f9fa; padding: 10px; border-radius: 3px; overflow-x: auto;">${JSON.stringify(payload, null, 2)}</pre>
+                </details>
+            `;
+            
+            // Remove "waiting" message if it exists
+            if (eventCount === 1) {
+                eventsList.innerHTML = '';
+            }
+            
+            // Add new event at the top
+            eventsList.insertBefore(eventDiv, eventsList.firstChild);
+        }
+
+        // Subscribe to job_listings changes
+        const channel = supabaseClient
+            .channel('job_listings_realtime_test')
+            .on(
+                'postgres_changes',
+                {
+                    event: '*', // Listen to all events (INSERT, UPDATE, DELETE)
+                    schema: 'public',
+                    table: 'job_listings'
+                },
+                (payload) => {
+                    console.log('Realtime event received:', payload);
+                    addEvent(payload.eventType, payload);
+                }
+            )
+            .subscribe((status) => {
+                console.log('Subscription status:', status);
+                
+                if (status === 'SUBSCRIBED') {
+                    updateStatus('✅ Connected! Listening for database changes...', 'connected');
+                } else if (status === 'CHANNEL_ERROR') {
+                    updateStatus('❌ Connection Error! Realtime might not be enabled.', 'error');
+                } else if (status === 'TIMED_OUT') {
+                    updateStatus('⏱️ Connection Timed Out! Check your internet connection.', 'error');
+                } else if (status === 'CLOSED') {
+                    updateStatus('🔌 Connection Closed!', 'error');
+                }
+            });
+
+        // Also test job_applications table
+        const applicationsChannel = supabaseClient
+            .channel('job_applications_realtime_test')
+            .on(
+                'postgres_changes',
+                {
+                    event: '*',
+                    schema: 'public',
+                    table: 'job_applications'
+                },
+                (payload) => {
+                    console.log('Application event received:', payload);
+                    addEvent(`[Applications] ${payload.eventType}`, payload);
+                }
+            )
+            .subscribe();
+
+        // Test connection
+        setTimeout(() => {
+            if (statusDiv.className.includes('pending')) {
+                updateStatus('⚠️ Taking longer than expected... Check if Realtime is enabled in Supabase.', 'error');
+            }
+        }, 5000);
+
+        console.log('Supabase Realtime Test Started');
+        console.log('Listening to: job_listings and job_applications tables');
+        console.log('Make changes in Supabase dashboard to see events here!');
+    </script>
+</body>
+</html>
