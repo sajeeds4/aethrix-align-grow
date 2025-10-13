@@ -722,6 +722,30 @@ export default function JobApplicationMultiStep() {
                   <div className="border-t pt-4 mt-6">
                     <Label htmlFor="resume">Upload Resume (Recommended)</Label>
                     <div className="mt-2">
+                      <label 
+                        htmlFor="resume" 
+                        className={`
+                          flex items-center justify-center gap-2 w-full px-4 py-2 rounded-md font-medium 
+                          transition-colors cursor-pointer
+                          ${uploadingFile ? 'opacity-50 cursor-not-allowed' : ''}
+                          ${application.resume_filename 
+                            ? 'border-2 border-gray-300 bg-white text-gray-700 hover:bg-gray-50' 
+                            : 'bg-primary text-primary-foreground hover:bg-primary/90'
+                          }
+                        `}
+                      >
+                        {uploadingFile ? (
+                          <>
+                            <Loader2 className="h-4 w-4 animate-spin" />
+                            Processing...
+                          </>
+                        ) : (
+                          <>
+                            <Upload className="h-4 w-4" />
+                            {application.resume_filename ? 'Change Resume' : 'Choose File'}
+                          </>
+                        )}
+                      </label>
                       <input
                         id="resume"
                         type="file"
@@ -730,25 +754,6 @@ export default function JobApplicationMultiStep() {
                         className="hidden"
                         disabled={uploadingFile}
                       />
-                      <Button
-                        type="button"
-                        variant={application.resume_filename ? "outline" : "default"}
-                        className="w-full"
-                        onClick={() => document.getElementById('resume')?.click()}
-                        disabled={uploadingFile}
-                      >
-                        {uploadingFile ? (
-                          <>
-                            <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                            Processing...
-                          </>
-                        ) : (
-                          <>
-                            <Upload className="h-4 w-4 mr-2" />
-                            {application.resume_filename ? 'Change Resume' : 'Choose File'}
-                          </>
-                        )}
-                      </Button>
                       {application.resume_filename && !uploadingFile && (
                         <div className="flex items-center justify-between bg-green-50 border border-green-200 rounded-md p-3 mt-2">
                           <p className="text-sm text-green-700 flex items-center gap-2">
@@ -759,11 +764,16 @@ export default function JobApplicationMultiStep() {
                             type="button"
                             variant="ghost"
                             size="sm"
-                            onClick={() => setApplication(prev => ({
-                              ...prev,
-                              resume_filename: '',
-                              resume_data: ''
-                            }))}
+                            onClick={() => {
+                              setApplication(prev => ({
+                                ...prev,
+                                resume_filename: '',
+                                resume_data: ''
+                              }));
+                              // Reset file input
+                              const fileInput = document.getElementById('resume') as HTMLInputElement;
+                              if (fileInput) fileInput.value = '';
+                            }}
                             className="text-red-600 hover:text-red-700 hover:bg-red-50"
                           >
                             <X className="h-4 w-4" />
