@@ -21,7 +21,9 @@ import {
   User,
   Briefcase,
   Heart,
-  FileText
+  FileText,
+  Upload,
+  X
 } from 'lucide-react';
 
 interface JobListing {
@@ -698,22 +700,48 @@ export default function JobApplicationMultiStep() {
 
                   <div className="border-t pt-4 mt-6">
                     <Label htmlFor="resume">Upload Resume (Recommended)</Label>
-                    <Input
-                      id="resume"
-                      type="file"
-                      accept=".pdf,.doc,.docx"
-                      onChange={handleFileUpload}
-                      className="cursor-pointer"
-                    />
-                    {application.resume_filename && (
-                      <p className="text-sm text-green-600 mt-2 flex items-center gap-2">
-                        <CheckCircle className="h-4 w-4" />
-                        Attached: {application.resume_filename}
+                    <div className="mt-2">
+                      <input
+                        id="resume"
+                        type="file"
+                        accept=".pdf,.doc,.docx"
+                        onChange={handleFileUpload}
+                        className="hidden"
+                      />
+                      <Button
+                        type="button"
+                        variant={application.resume_filename ? "outline" : "default"}
+                        className="w-full"
+                        onClick={() => document.getElementById('resume')?.click()}
+                      >
+                        <Upload className="h-4 w-4 mr-2" />
+                        {application.resume_filename ? 'Change Resume' : 'Choose File'}
+                      </Button>
+                      {application.resume_filename && (
+                        <div className="flex items-center justify-between bg-green-50 border border-green-200 rounded-md p-3 mt-2">
+                          <p className="text-sm text-green-700 flex items-center gap-2">
+                            <CheckCircle className="h-4 w-4" />
+                            <span className="font-medium">{application.resume_filename}</span>
+                          </p>
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => setApplication(prev => ({
+                              ...prev,
+                              resume_filename: '',
+                              resume_data: ''
+                            }))}
+                            className="text-red-600 hover:text-red-700 hover:bg-red-50"
+                          >
+                            <X className="h-4 w-4" />
+                          </Button>
+                        </div>
+                      )}
+                      <p className="text-sm text-gray-500 mt-2">
+                        PDF or Word document, max 2MB
                       </p>
-                    )}
-                    <p className="text-sm text-gray-500 mt-1">
-                      PDF or Word document, max 2MB
-                    </p>
+                    </div>
                   </div>
                 </div>
               )}
