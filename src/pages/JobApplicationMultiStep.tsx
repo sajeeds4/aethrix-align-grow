@@ -84,6 +84,7 @@ export default function JobApplicationMultiStep() {
   const [job, setJob] = useState<JobListing | null>(null);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
+  const [uploadingFile, setUploadingFile] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
   const [lastSaved, setLastSaved] = useState<Date | null>(null);
   
@@ -188,6 +189,8 @@ export default function JobApplicationMultiStep() {
     const file = e.target.files?.[0];
     if (!file) return;
 
+    setUploadingFile(true);
+
     const validTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
     if (!validTypes.includes(file.type)) {
       toast({
@@ -195,6 +198,7 @@ export default function JobApplicationMultiStep() {
         description: "Please upload a PDF or Word document",
         variant: "destructive",
       });
+      setUploadingFile(false);
       return;
     }
 
@@ -204,11 +208,18 @@ export default function JobApplicationMultiStep() {
         description: "Resume must be less than 2MB",
         variant: "destructive",
       });
+      setUploadingFile(false);
       return;
     }
 
     try {
       const reader = new FileReader();
+      reader.onloadstart = () => {
+        toast({
+          title: "Processing...",
+          description: "Reading your file",
+        });
+      };
       reader.onload = () => {
         const base64 = reader.result as string;
         setApplication(prev => ({
@@ -216,14 +227,24 @@ export default function JobApplicationMultiStep() {
           resume_filename: file.name,
           resume_data: base64
         }));
+        setUploadingFile(false);
         toast({
           title: "Resume Uploaded",
           description: `${file.name} has been attached`,
         });
       };
+      reader.onerror = () => {
+        setUploadingFile(false);
+        toast({
+          title: "Upload Failed",
+          description: "Failed to read file",
+          variant: "destructive",
+        });
+      };
       reader.readAsDataURL(file);
     } catch (error) {
       console.error('Error reading file:', error);
+      setUploadingFile(false);
       toast({
         title: "Upload Failed",
         description: "Failed to upload resume",
@@ -707,17 +728,28 @@ export default function JobApplicationMultiStep() {
                         accept=".pdf,.doc,.docx"
                         onChange={handleFileUpload}
                         className="hidden"
+                        disabled={uploadingFile}
                       />
                       <Button
                         type="button"
                         variant={application.resume_filename ? "outline" : "default"}
                         className="w-full"
                         onClick={() => document.getElementById('resume')?.click()}
+                        disabled={uploadingFile}
                       >
-                        <Upload className="h-4 w-4 mr-2" />
-                        {application.resume_filename ? 'Change Resume' : 'Choose File'}
+                        {uploadingFile ? (
+                          <>
+                            <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                            Processing...
+                          </>
+                        ) : (
+                          <>
+                            <Upload className="h-4 w-4 mr-2" />
+                            {application.resume_filename ? 'Change Resume' : 'Choose File'}
+                          </>
+                        )}
                       </Button>
-                      {application.resume_filename && (
+                      {application.resume_filename && !uploadingFile && (
                         <div className="flex items-center justify-between bg-green-50 border border-green-200 rounded-md p-3 mt-2">
                           <p className="text-sm text-green-700 flex items-center gap-2">
                             <CheckCircle className="h-4 w-4" />
