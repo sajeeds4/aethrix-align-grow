@@ -6,30 +6,10 @@ export interface EmailData {
 }
 
 export class EmailService {
-  // Using a simple email service like Resend, SendGrid, or Nodemailer
-  static async sendEmail(data: EmailData): Promise<{ success: boolean; error?: string }> {
-    try {
-      // Example using fetch to call your email API endpoint
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      return { success: true };
-    } catch (error) {
-      console.error('Email sending failed:', error);
-      return { 
-        success: false, 
-        error: error instanceof Error ? error.message : 'Unknown error' 
-      };
-    }
+  // Backend removed: make email sending a no-op that always succeeds.
+  static async sendEmail(_data: EmailData): Promise<{ success: boolean; error?: string }> {
+    console.warn('EmailService.sendEmail is a no-op in frontend-only mode.');
+    return { success: true };
   }
 
   static async sendContactFormNotification(formData: {
@@ -73,11 +53,7 @@ export class EmailService {
       </div>
     `;
 
-    return this.sendEmail({
-      to: 'info@aethrixsystems.com', // Your company email
-      subject: `New Contact Form Submission - ${formData.name}`,
-      html: emailHtml,
-    });
+    return this.sendEmail({ to: 'info@aethrixsystems.com', subject: `New Contact Form Submission - ${formData.name}`, html: emailHtml });
   }
 
   static async sendAutoReply(userEmail: string, name: string): Promise<{ success: boolean; error?: string }> {
@@ -129,10 +105,6 @@ export class EmailService {
       </div>
     `;
 
-    return this.sendEmail({
-      to: userEmail,
-      subject: 'Thank you for contacting Aethrix Systems - We\'ll be in touch soon!',
-      html: emailHtml,
-    });
+    return this.sendEmail({ to: userEmail, subject: 'Thank you for contacting Aethrix Systems - We\'ll be in touch soon!', html: emailHtml });
   }
 }

@@ -1,10 +1,4 @@
-import { createClient } from '@supabase/supabase-js';
-
-const SUPABASE_URL = "https://faoiscbbfjtvpywmddpn.supabase.co";
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZhb2lzY2JiZmp0dnB5d21kZHBuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg5NDgyNzUsImV4cCI6MjA3NDUyNDI3NX0.crp_UbafreGGA_9H9berxsNYzUSijPzOuAQtC6jT044";
-
-// Create a simple client without complex types
-const supabaseClient = createClient(SUPABASE_URL, SUPABASE_KEY);
+// Supabase removed: provide no-op service with same API surface
 
 export interface ContactSubmission {
   [key: string]: string | null | undefined;
@@ -36,100 +30,65 @@ export interface ContactSubmissionInsert {
 }
 
 export class ContactService {
+  private static readonly STORAGE_KEY = 'contact_submissions';
+
+  // Store locally (frontend-only)
   static async submitContactForm(data: ContactSubmissionInsert): Promise<{ success: boolean; id?: string; error?: string }> {
     try {
-      console.log('Submitting to Supabase directly...', data);
-      
-      // Only include fields that exist in the database
-      const submissionData = {
+      const id = (crypto?.randomUUID && crypto.randomUUID()) || Math.random().toString(36).slice(2);
+      const submission: ContactSubmission = {
+        id,
         name: data.name,
         email: data.email,
         company: data.company || null,
         phone: data.phone || null,
+        industry: data.industry || null,
+        service: data.service || null,
+        budget: data.budget || null,
+        timeline: data.timeline || null,
         message: data.message || null,
+        status: 'new',
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
       };
-      
-      console.log('Cleaned submission data:', submissionData);
-      
-      const { data: result, error } = await supabaseClient
-        .from('contact_submissions')
-        .insert(submissionData)
-        .select('id')
-        .single();
 
-      if (error) {
-        console.error('Supabase error details:', error);
-        
-        // Handle specific RLS error
-        if (error.message.includes('row-level security policy')) {
-          return { 
-            success: false, 
-            error: 'Database permission error. Please run the RLS fix script in Supabase SQL Editor: fix-rls-policies.sql' 
-          };
-        }
-        
-        return { success: false, error: error.message };
-      }
-
-      if (!result) {
-        return { success: false, error: 'No data returned from insert' };
-      }
-
-      console.log('Supabase submission successful:', result);
-      return { success: true, id: result?.id };
+      const existing = this.getStoredSubmissions();
+      existing.unshift(submission);
+      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(existing));
+      return { success: true, id };
     } catch (error) {
-      console.error('Supabase connection error:', error);
-      const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
-      return { success: false, error: errorMessage };
+      const msg = error instanceof Error ? error.message : 'Failed to store locally';
+      return { success: false, error: msg };
     }
   }
 
   static async getSubmissions(): Promise<{ success: boolean; data?: ContactSubmission[]; error?: string }> {
     try {
-      console.log('Fetching submissions from Supabase...');
-      
-      const { data, error } = await supabaseClient
-        .from('contact_submissions')
-        .select('*')
-        .order('created_at', { ascending: false });
-
-      if (error) {
-        console.error('Supabase fetch error:', error);
-        return { success: false, error: error.message };
-      }
-
-      console.log('Fetched submissions:', data);
-      return { success: true, data: (data as ContactSubmission[]) || [] };
+      const data = this.getStoredSubmissions();
+      return { success: true, data };
     } catch (error) {
-      console.error('Supabase connection error:', error);
-      const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
-      return { success: false, error: errorMessage };
+      const msg = error instanceof Error ? error.message : 'Failed to retrieve data';
+      return { success: false, error: msg };
     }
   }
 
   static async updateSubmissionStatus(id: string, status: string): Promise<{ success: boolean; error?: string }> {
     try {
-      console.log(`Updating submission ${id} status to ${status}...`);
-      
-      const { error } = await supabaseClient
-        .from('contact_submissions')
-        .update({ 
-          status, 
-          updated_at: new Date().toISOString() 
-        })
-        .eq('id', id);
-
-      if (error) {
-        console.error('Supabase update error:', error);
-        return { success: false, error: error.message };
-      }
-
-      console.log('Status update successful');
+      const items = this.getStoredSubmissions();
+      const idx = items.findIndex(s => s.id === id);
+      if (idx === -1) return { success: false, error: 'Submission not found' };
+      items[idx].status = status;
+      items[idx].updated_at = new Date().toISOString();
+      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(items));
       return { success: true };
     } catch (error) {
-      console.error('Supabase connection error:', error);
-      const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
-      return { success: false, error: errorMessage };
+      const msg = error instanceof Error ? error.message : 'Failed to update status';
+      return { success: false, error: msg };
     }
+  }
+
+  private static getStoredSubmissions(): ContactSubmission[] {
+    const stored = localStorage.getItem(this.STORAGE_KEY);
+    return stored ? (JSON.parse(stored) as ContactSubmission[]) : [];
   }
 }

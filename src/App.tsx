@@ -2,11 +2,9 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
-import { Suspense, lazy, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Suspense, lazy } from "react";
 import { HelmetProvider } from 'react-helmet-async';
-import AdminDashboard from "@/components/AdminDashboard";
-import SAPAdminPage from "@/pages/SAPAdminPage";
 
 const Index = lazy(() => import("./pages/Index"));
 const Services = lazy(() => import("./pages/Services"));
@@ -56,37 +54,16 @@ const AIAnalytics = lazy(() => import("./pages/ai/Analytics"));
 
 const queryClient = new QueryClient();
 
-const KeyboardShortcuts = () => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      // Check for Ctrl+Alt+Shift+A
-      if (event.ctrlKey && event.altKey && event.shiftKey && event.key === 'A') {
-        event.preventDefault();
-        navigate('/admin');
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-    
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [navigate]);
-
-  return null;
-};
+//
 
 const App = () => (
   <HelmetProvider>
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <AdminDashboard />
+  <Toaster />
+  <Sonner />
         <BrowserRouter>
-          <KeyboardShortcuts />
+          {/* Keyboard shortcuts removed */}
           <Suspense fallback={<div className="p-6">Loading…</div>}>
             <Routes>
             <Route path="/" element={<Index />} />
@@ -141,9 +118,7 @@ const App = () => (
             <Route path="/case-studies" element={<CaseStudies />} />
             <Route path="/contact" element={<Consultation />} />
             
-            {/* SAP-Style Admin Portal */}
-            <Route path="/admin" element={<SAPAdminPage onLogout={() => window.location.href = '/'} />} />
-            <Route path="/admin/*" element={<SAPAdminPage onLogout={() => window.location.href = '/'} />} />
+            {/* Admin routes removed */}
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
